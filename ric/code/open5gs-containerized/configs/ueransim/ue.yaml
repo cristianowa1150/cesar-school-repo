@@ -1,0 +1,85 @@
+# IMSI: International Mobile Subscriber Identity
+# Example: 001010000000001 (MCC: 001, MNC: 01, MSIN: 0000000001)
+supi: 'imsi-001010000000001'
+
+# Mobile Country Code & Mobile Network Code
+mcc: '001'
+mnc: '01'
+
+# Authentication key
+key: '465B5CE8B199B49FAA5F0A2EE238A6B0'
+
+# Operator code (OP or OPC) of the SIM
+op: 'E8ED289DEBA952E4283B54E88E6183B8'
+opType: 'OPC'  # 'OP' or 'OPC'
+
+# This value specifies the OP type and it can be either 'OP' or 'OPC'
+# Authentication Management Field (AMF) value
+amf: '8000'
+
+# IMEI: International Mobile Equipment Identity (15 or 16 digits)
+# This field is optional. If not provided, IMEI will be randomly generated.
+# imei: '356938035643803'
+
+# IMEISV: International Mobile Equipment Identity Software Version (16 digits)
+# This field is optional. If not provided, IMEISV will be randomly generated.
+# imeisv: '3569380356438008'
+
+# List of gNB IP addresses for Radio Link Simulation
+gnbSearchList:
+  - 10.20.0.100  # gNB IP address
+
+# List of supported S-NSSAIs
+slices:
+  - sst: 1
+    # sd: 0x010203  # Removido - AMF não suporta SD
+
+# Default Configured NSSAI (optional)
+# This field is optional. If not provided, the UE will use the S-NSSAIs from 'slices' field.
+# defaultConfiguredNssai:
+#   - sst: 0x1
+#     sd: 0x010203
+
+# Integrity algorithms in priority order
+# Possible values: IA1, IA2, IA3
+integrity:
+  IA1: false
+  IA2: true
+  IA3: false
+
+# Maximum integrity protected data rate
+# Possible values: full, 64kbs
+# Formato correto para UERANSIM: objeto com uplink e downlink
+integrityMaxRate:
+  uplink: full
+  downlink: full
+
+# Ciphering algorithms in priority order
+# Possible values: EA1, EA2, EA3, EA0
+ciphering:
+  EA1: false
+  EA2: false
+  EA3: false
+  EA0: true
+
+# Configured APN list
+apn: internet
+
+# Routing indicator (optional)
+# routingIndicator: ''
+
+# HPLMN (Home Public Land Mobile Network) indicator (optional)
+# hplmn: ''
+
+# UAC (User Access Control) configuration (obrigatório)
+uacAic:
+  mps: false
+  mcs: false
+
+uacAcc:
+  normalClass: 0
+  class11: false
+  class12: false
+  class13: false
+  class14: false
+  class15: false

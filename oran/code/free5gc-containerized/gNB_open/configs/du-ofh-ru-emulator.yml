@@ -1,0 +1,70 @@
+# srsDU — split F1 + O-RAN Open Fronthaul (Split 7.2) com RU emulada (ru_emulator)
+# CU-CP: 10.100.200.51 | DU (privnet): 10.100.200.52 | OFH: interface extra (eth1)
+#
+# Este perfil é focado em laboratório:
+# - A interface OFH é uma rede Docker dedicada (`ofhnet`) ligada ao DU como `eth1`.
+# - O RU é o serviço `srsran-ru` (ru_emulator) na mesma `ofhnet`.
+# - MACs abaixo devem bater com as MACs reais vistas no runtime (ver scripts/verify-ofh.sh).
+
+f1ap:
+  cu_cp_addr: 10.100.200.51
+  bind_addr: 10.100.200.52
+
+f1u:
+  socket:
+    - bind_addr: 10.100.200.52
+
+ru_ofh:
+  # Valores “seguros” para laboratório; ajuste fino depende de RU real.
+  t1a_max_cp_dl: 420
+  t1a_min_cp_dl: 250
+  t1a_max_cp_ul: 420
+  t1a_min_cp_ul: 250
+  t1a_max_up: 196
+  t1a_min_up: 80
+  ta4_max: 500
+  ta4_min: 25
+  is_prach_cp_enabled: true
+  ignore_ecpri_payload_size: true
+  compr_method_ul: bfp
+  compr_bitwidth_ul: 9
+  compr_method_dl: bfp
+  compr_bitwidth_dl: 9
+  compr_method_prach: bfp
+  compr_bitwidth_prach: 9
+  enable_ul_static_compr_hdr: true
+  enable_dl_static_compr_hdr: true
+  iq_scaling: 1.0
+  cells:
+    - network_interface: eth1
+      # MAC do RU e do DU no link OFH.
+      ru_mac_addr: "02:00:00:00:01:01"
+      du_mac_addr: "02:00:00:00:01:02"
+      vlan_tag_cp: 2
+      vlan_tag_up: 2
+      prach_port_id: [0]
+      dl_port_id: [0]
+      ul_port_id: [0]
+
+# Célula (TDD n78) para laboratório OFH; pode ajustar depois.
+cell_cfg:
+  dl_arfcn: 632628
+  band: 78
+  channel_bandwidth_MHz: 20
+  common_scs: 30
+  plmn: "20893"
+  tac: 1
+  pci: 3
+
+log:
+  filename: /logs/du-ofh.log
+  all_level: info
+
+pcap:
+  mac_enable: true
+  mac_filename: /logs/du_ofh_mac.pcap
+  f1ap_enable: true
+  f1ap_filename: /logs/du_ofh_f1ap.pcap
+  f1u_enable: true
+  f1u_filename: /logs/du_ofh_f1u.pcap
+

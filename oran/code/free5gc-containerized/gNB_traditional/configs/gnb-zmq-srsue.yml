@@ -1,0 +1,61 @@
+# srsRAN Project gNB — variante ZMQ para srsUE (free5GC)
+# PLMN: 208/93, AMF: 10.100.200.16:38412, gNB: 10.100.200.50
+# Band 3, SCS 15 kHz (compatível com srsUE). ZMQ: 2000 (DL), 2001 (UL).
+
+gnb_id: 411
+gnb_id_bit_length: 22
+
+cu_cp:
+  amf:
+    addr: 10.100.200.16
+    port: 38412
+    bind_addr: 10.100.200.50
+    supported_tracking_areas:
+      - tac: 1
+        plmn_list:
+          - plmn: "20893"
+            tai_slice_support_list:
+              - sst: 1
+
+# RU ZMQ para conectar srsUE (no host ou outro container)
+ru_sdr:
+  device_driver: zmq
+  # tx: gNB bind 2000 (DL). rx: gNB connect ao UE (host) em 2001 — UE faz bind 2001.
+  device_args: "tx_port=tcp://0.0.0.0:2000,rx_port=tcp://host.docker.internal:2001,base_srate=23.04e6,id=gnb"
+  srate: 23.04
+  tx_gain: 75
+  rx_gain: 75
+
+# Célula FDD band 3, SCS 15 kHz — alinhado ao srsUE (5G SA + ZMQ não usa n78/SCS30 de forma suportada).
+# n78 + SCS 30 kHz deixa o UE em "Attaching..." e o gNB em ZMQ rx com 0 amostras (sem sync PHY).
+cell_cfg:
+  dl_arfcn: 368500
+  band: 3
+  channel_bandwidth_MHz: 20
+  common_scs: 15
+  plmn: "20893"
+  tac: 1
+  pci: 1
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64
+  pdcch:
+    common:
+      ss0_index: 0
+      coreset0_index: 12
+    dedicated:
+      ss2_type: common
+      dci_format_0_1_and_1_1: false
+  prach:
+    prach_config_index: 1
+
+log:
+  filename: /logs/gnb.log
+  all_level: info
+
+pcap:
+  ngap_enable: true
+  ngap_filename: /logs/gnb_ngap.pcap
+  mac_enable: true
+  mac_filename: /logs/gnb_mac.pcap

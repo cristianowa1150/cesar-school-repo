@@ -14,8 +14,9 @@ Laboratório 5G Standalone (SA) com **free5GC** (core) e **srsRAN Project** (RAN
 | Pasta | Papel |
 |--------|--------|
 | **`core/`** | free5GC (AMF, SMF, UPF, NRF, …) — `docker-compose.yaml` só do core |
-| **`gNB_tradicional/`** | gNB monolítico (`gnb`) — IP **10.100.200.50** |
-| **`gNB_open/`** | Split CU/DU (`srscu` + `srsdu`, F1) — CU **.51**, DU **.52** |
+| **`gNB_traditional/`** | gNB monolítico (`gnb`) — IP **10.100.200.50** |
+| **`gNB_desagregated/`** | Split CU/DU (`srscu` + `srsdu`, F1) — CU **.51**, DU **.52** |
+| **`gNB_open/`** | Mesmo split + **Open Fronthaul** (RU emulada, rede `ofhnet`) — mesmos IPs **.51** / **.52** que o desagregado (não usar os dois *stacks* em paralelo) |
 
 ## Início rápido
 
@@ -25,8 +26,11 @@ cd core
 ./scripts/up.sh
 ./scripts/add-subscriber.sh    # necessário para UE / sessão PDU
 
-# 2) RAN — só uma pasta ou as duas (gnb_id/pci já distingue tradicional vs aberta)
-cd ../gNB_tradicional && ./scripts/up.sh && cd ../gNB_open && ./scripts/up.sh
+# 2) RAN — escolha UMA stack CU/DU se usar split: gNB_desagregated OU gNB_open (não ambas).
+#    Monolítico gNB_traditional pode coexistir com uma stack CU/DU (gnb_id distinto).
+cd ../gNB_traditional && ./scripts/up.sh
+# ou: cd ../gNB_desagregated && ./scripts/up.sh
+# ou: cd ../gNB_open && DU_CONFIG=du-ofh-ru-emulator.yml CU_AUTO_START=1 DU_AUTO_START=1 RU_AUTO_START=1 ./scripts/up.sh
 
 # 3) Verificações (sempre a partir de core/)
 cd ../core
@@ -39,7 +43,9 @@ cd ../core
 
 ```bash
 # primeiro a RAN
-cd gNB_tradicional && ./scripts/down.sh
+cd gNB_traditional && ./scripts/down.sh
+# ou
+cd gNB_desagregated && ./scripts/down.sh
 # ou
 cd gNB_open && ./scripts/down.sh
 
@@ -58,15 +64,21 @@ free5gc-containerized/
 │   ├── docker-compose.yaml       # apenas NFs free5GC (+ rede nomeada)
 │   ├── Dockerfile.srsRAN         # imagem srsRAN (usada pelas pastas gNB_*)
 │   ├── config/ cert/ scripts/ docs/ …
-├── gNB_tradicional/
+├── gNB_traditional/
 │   ├── docker-compose.yaml       # srsran-gnb-tradicional @ 10.100.200.50
 │   ├── configs/   logs/
 │   └── scripts/
 │       ├── up.sh
 │       └── down.sh
+├── gNB_desagregated/
+│   ├── docker-compose.yaml       # srsran-cu @ .51 + srsran-du @ .52
+│   ├── configs/ (cu.yml, du.yml, …)   logs/
+│   └── scripts/
+│       ├── up.sh
+│       └── down.sh
 └── gNB_open/
-    ├── docker-compose.yaml       # srsran-cu @ .51 + srsran-du @ .52
-    ├── configs/ (cu.yml, du.yml, …)   logs/
+    ├── docker-compose.yaml       # CU + DU + srsran-ru (OFH); rede gnb-open-ofhnet
+    ├── configs/   logs/
     └── scripts/
         ├── up.sh
         └── down.sh
@@ -89,19 +101,20 @@ A detecção de RAN nos scripts de validação em `core/scripts/` usa o helper `
 ## Notas
 
 - Se já usou uma versão anterior deste lab, a rede Docker passou a chamar-se **`free5gc-privnet`**. Pare stacks antigas e remova redes/containers órfãos se necessário (`docker network ls`, `docker network rm`).
-- O arquivo opcional `core/docker-compose-prometheus.yaml` fixa IPs **10.100.200.50** e **.51** — conflitam com **gNB_tradicional** (.50) e **CU** da RAN aberta (.51). Altere os IPs desse compose se precisar dos três ao mesmo tempo.
+- O arquivo opcional `core/docker-compose-prometheus.yaml` fixa IPs **10.100.200.50** e **.51** — conflitam com **gNB_traditional** (.50) e **CU** do split (.51). Altere os IPs desse compose se precisar de métricas em paralelo com esses labs.
 
 ## Requisitos
 
 - Docker e Docker Compose v2  
 - IP forwarding (o `core/scripts/up.sh` tenta habilitar)  
-- Para UE com ZMQ: srsUE no host — ver `core/docs/CONECTAR_UE.md` (ajuste `gnb-zmq-srsue.yml` em `gNB_tradicional/configs/` e troque o arquivo referenciado no `entrypoint.sh` se precisar)
+- Para UE com ZMQ: srsUE no host — ver `core/docs/CONECTAR_UE.md` (ajuste `gnb-zmq-srsue.yml` em `gNB_traditional/configs/` e troque o arquivo referenciado no `entrypoint.sh` se precisar)
 
 ## Laboratórios (aula e relatório)
 
 Roteiros passo a passo, comandos, evidências (prints/logs) e **guia de entrega com rubrica**:
 
-→ **[docs/laboratorios/INDICE.md](docs/laboratorios/INDICE.md)**
+→ **[docs/labs/INDICE.md](docs/labs/INDICE.md)** (roteiros: core, tradicional, desagregado, open/O-RAN)
+→ **[docs/labs/00-demo-rapido-3-rans.md](docs/labs/00-demo-rapido-3-rans.md)** (sequência curta para demo dos 3 projetos)
 
 ## Documentação (core)
 

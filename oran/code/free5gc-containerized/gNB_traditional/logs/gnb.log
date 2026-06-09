@@ -1,0 +1,520 @@
+2026-04-07T11:33:30.430788 [GNB     ] [I] Built in Release mode using commit 4bf1543936 on branch main
+2026-04-07T11:33:30.431711 [CONFIG  ] [I] Input configuration (only non-default values): 
+gnb_id: 411
+gnb_id_bit_length: 22
+log:
+  filename: /logs/gnb.log
+  all_level: info
+cu_cp:
+  amf:
+    addr: 10.100.200.16
+    port: 38412
+    bind_addr: 10.100.200.50
+    supported_tracking_areas: "tac: 1\nplmn_list:\n  - plmn: 20893\n    tai_slice_support_list:\n      - sst: 1"
+pcap:
+  ngap_filename: /logs/gnb_ngap.pcap
+  ngap_enable: true
+  mac_filename: /logs/gnb_mac.pcap
+  mac_enable: true
+cell_cfg:
+  pci: 1
+  dl_arfcn: 368500
+  band: 3
+  common_scs: 15
+  channel_bandwidth_MHz: 20
+  plmn: 20893
+  tac: 1
+  pdcch:
+    common:
+      coreset0_index: 12
+      ss0_index: 0
+    dedicated:
+      dci_format_0_1_and_1_1: false
+      ss2_type: common
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64
+  prach:
+    prach_config_index: 1
+ru_sdr:
+  srate: 23.04
+  device_driver: zmq
+  device_args: tx_port=tcp://0.0.0.0:2000,rx_port=tcp://host.docker.internal:2001,base_srate=23.04e6,id=gnb
+  tx_gain: 75
+  rx_gain: 75
+2026-04-07T11:33:31.071339 [GNB     ] [W] CPU0 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071351 [GNB     ] [W] CPU1 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071359 [GNB     ] [W] CPU2 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071366 [GNB     ] [W] CPU3 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071374 [GNB     ] [W] CPU4 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071390 [GNB     ] [W] CPU5 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071397 [GNB     ] [W] CPU6 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071404 [GNB     ] [W] CPU7 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071411 [GNB     ] [W] CPU8 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071419 [GNB     ] [W] CPU9 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071426 [GNB     ] [W] CPU10 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071432 [GNB     ] [W] CPU11 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071440 [GNB     ] [W] CPU12 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071450 [GNB     ] [W] CPU13 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071458 [GNB     ] [W] CPU14 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071464 [GNB     ] [W] CPU15 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071471 [GNB     ] [W] CPU16 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071478 [GNB     ] [W] CPU17 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071484 [GNB     ] [W] CPU18 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071492 [GNB     ] [W] CPU19 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071499 [GNB     ] [W] CPU20 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071508 [GNB     ] [W] CPU21 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:33:31.071517 [GNB     ] [W] DRM KMS polling is enabled, which may hinder performance. You can disable it using the "srsran_performance" script
+2026-04-07T11:33:31.081814 [CONFIG  ] [I] Worker pool "main_pool" instantiated with #workers=5, task_queue_size=2048, backoff_period=50us and priority=96.
+2026-04-07T11:33:31.098526 [GTPU    ] [I] GTP-U demux. queue_size=2046 batch_size=256 warn_on_drop=false test_mode=false
+2026-04-07T11:33:31.098767 [GTPU    ] [I] Tunnel added. teid=0x000000
+2026-04-07T11:33:31.160861 [DU-MNG  ] [I] The upper-bound on the number of UEs supported by cell {pci=1, du_cell_index=0} is 160 (the actual number might be lower than that). This is determined by the lowest of the following limits: SR (160), CSI (160) and SRS (n/a).
+2026-04-07T11:33:31.161242 [DU      ] [I] DU created successfully
+2026-04-07T11:33:31.161249 [DU      ] [I] O-DU created successfully
+2026-04-07T11:33:31.175144 [zmq:tx:0:0] [I] Binding to address tcp://0.0.0.0:2000.
+2026-04-07T11:33:31.188368 [zmq:rx:0:0] [I] Connecting to address tcp://host.docker.internal:2001.
+2026-04-07T11:33:32.228049 [GNB     ] [I] SSB derived parameters for cell: 1, band: 3, dl_arfcn:368500, nof_crbs: 106 scs:15kHz, ssb_scs:15kHz:
+	 - SSB offset pointA:40 
+	 - k_SSB:6 
+	 - SSB arfcn:368410 
+	 - Coreset index:12 
+	 - Searchspace index:0
+2026-04-07T11:33:32.228083 [IO-EPOLL] [E] fd=0: Failed to register file descriptor. Cause: epoll_ctl failed with "Operation not permitted"
+2026-04-07T11:33:32.228104 [APP     ] [E] Couldn't register stdin handler
+2026-04-07T11:33:32.228106 [GNB     ] [I] Starting CU-CP...
+2026-04-07T11:33:32.237335 [CU-CP   ] [I] N2: Connection to AMF on 10.100.200.16:38412 was established
+2026-04-07T11:33:32.238882 [NGAP    ] [I] Tx PDU: NGSetupRequest
+2026-04-07T11:33:32.241411 [NGAP    ] [I] Rx PDU: NGSetupResponse
+2026-04-07T11:33:32.241663 [CU-CP   ] [I] Connected to AMF. Supported PLMNs: 20893
+2026-04-07T11:33:32.241689 [GNB     ] [I] CU-CP started successfully
+2026-04-07T11:33:32.241699 [CU-UP   ] [I] CU-UP starting...
+2026-04-07T11:33:32.241981 [CU-CP   ] [I] Added TNL connection to CU-UP 0
+2026-04-07T11:33:32.242439 [CU-UP-E1] [I] Sending E1SetupRequest
+2026-04-07T11:33:32.242628 [CU-UP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupRequest
+2026-04-07T11:33:32.242641 [CU-CP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupRequest
+2026-04-07T11:33:32.242658 [CU-CP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupResponse
+2026-04-07T11:33:32.242672 [CU-UP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupResponse
+2026-04-07T11:33:32.242674 [CU-UP-E1] [I] "E1AP CU-UP Setup Procedure" finalized
+2026-04-07T11:33:32.242692 [CU-UP   ] [I] CU-UP started successfully
+2026-04-07T11:33:32.242700 [DU      ] [I] Starting DU...
+2026-04-07T11:33:32.242702 [DU      ] [I] Starting DU-High...
+2026-04-07T11:33:32.242704 [DU-MNG  ] [I] DU manager starting...
+2026-04-07T11:33:32.243169 [CU-CP   ] [I] Added TNL connection to DU 0
+2026-04-07T11:33:32.263757 [DU-MNG  ] [I] SIB1 cell=0: {
+  "cellSelectionInfo": {
+    "q-RxLevMin": -70,
+    "q-QualMin": -20
+  },
+  "cellAccessRelatedInfo": {
+    "plmn-IdentityInfoList": [
+      {
+        "plmn-IdentityList": [
+          {
+            "mcc": [
+              2,
+              0,
+              8
+            ],
+            "mnc": [
+              9,
+              3
+            ]
+          }
+        ],
+        "trackingAreaCode": "000000000000000000000001",
+        "cellIdentity": "000000000000011001101100000000000000",
+        "cellReservedForOperatorUse": "notReserved"
+      }
+    ]
+  },
+  "connEstFailureControl": {
+    "connEstFailCount": "n1",
+    "connEstFailOffsetValidity": "s30",
+    "connEstFailOffset": 1
+  },
+  "servingCellConfigCommon": {
+    "downlinkConfigCommon": {
+      "frequencyInfoDL": {
+        "frequencyBandList": [
+          {
+            "freqBandIndicatorNR": 3
+          }
+        ],
+        "offsetToPointA": 40,
+        "scs-SpecificCarrierList": [
+          {
+            "offsetToCarrier": 0,
+            "subcarrierSpacing": "kHz15",
+            "carrierBandwidth": 106,
+            "txDirectCurrentLocation": 636
+          }
+        ]
+      },
+      "initialDownlinkBWP": {
+        "genericParameters": {
+          "locationAndBandwidth": 28875,
+          "subcarrierSpacing": "kHz15"
+        },
+        "pdcch-ConfigCommon": {
+          {
+            "commonSearchSpaceList": [
+              {
+                "searchSpaceId": 1,
+                "controlResourceSetId": 0,
+                "monitoringSlotPeriodicityAndOffset": {
+                },
+                "monitoringSymbolsWithinSlot": "10000000000000",
+                "nrofCandidates": {
+                  "aggregationLevel1": "n0",
+                  "aggregationLevel2": "n0",
+                  "aggregationLevel4": "n1",
+                  "aggregationLevel8": "n0",
+                  "aggregationLevel16": "n0"
+                },
+                "searchSpaceType": {
+                  "common": {
+                    "dci-Format0-0-AndFormat1-0": {
+                    }
+                  }
+                }
+              }
+            ],
+            "searchSpaceSIB1": 0,
+            "pagingSearchSpace": 1,
+            "ra-SearchSpace": 1
+          }
+        },
+        "pdsch-ConfigCommon": {
+          {
+            "pdsch-TimeDomainAllocationList": [
+              {
+                "mappingType": "typeA",
+                "startSymbolAndLength": 40
+              }
+            ]
+          }
+        }
+      },
+      "bcch-Config": {
+        "modificationPeriodCoeff": "n4"
+      },
+      "pcch-Config": {
+        "defaultPagingCycle": "rf128",
+        "nAndPagingFrameOffset": {
+        },
+        "ns": "one"
+      }
+    },
+    "uplinkConfigCommon": {
+      "frequencyInfoUL": {
+        "frequencyBandList": [
+          {
+            "freqBandIndicatorNR": 3
+          }
+        ],
+        "absoluteFrequencyPointA": 347592,
+        "scs-SpecificCarrierList": [
+          {
+            "offsetToCarrier": 0,
+            "subcarrierSpacing": "kHz15",
+            "carrierBandwidth": 106
+          }
+        ]
+      },
+      "initialUplinkBWP": {
+        "genericParameters": {
+          "locationAndBandwidth": 28875,
+          "subcarrierSpacing": "kHz15"
+        },
+        "rach-ConfigCommon": {
+          {
+            "rach-ConfigGeneric": {
+              "prach-ConfigurationIndex": 1,
+              "msg1-FDM": "one",
+              "msg1-FrequencyStart": 8,
+              "zeroCorrelationZoneConfig": 0,
+              "preambleReceivedTargetPower": -100,
+              "preambleTransMax": "n7",
+              "powerRampingStep": "dB4",
+              "ra-ResponseWindow": "sl10"
+            },
+            "ssb-perRACH-OccasionAndCB-PreamblesPerSSB": {
+              "one": "n64"
+            },
+            "ra-ContentionResolutionTimer": "sf64",
+            "prach-RootSequenceIndex": {
+              "l839": 1
+            },
+            "restrictedSetConfig": "unrestrictedSet"
+          }
+        },
+        "pusch-ConfigCommon": {
+          {
+            "pusch-TimeDomainAllocationList": [
+              {
+                "k2": 4,
+                "mappingType": "typeA",
+                "startSymbolAndLength": 27
+              }
+            ],
+            "msg3-DeltaPreamble": 6,
+            "p0-NominalWithGrant": -76
+          }
+        },
+        "pucch-ConfigCommon": {
+          {
+            "pucch-ResourceCommon": 11,
+            "pucch-GroupHopping": "neither",
+            "p0-nominal": -90
+          }
+        }
+      },
+      "timeAlignmentTimerCommon": "infinity"
+    },
+    "n-TimingAdvanceOffset": "n25600",
+    "ssb-PositionsInBurst": {
+      "inOneGroup": "10000000"
+    },
+    "ssb-PeriodicityServingCell": "ms10",
+    "ss-PBCH-BlockPower": -16
+  },
+  "ue-TimersAndConstants": {
+    "t300": "ms1000",
+    "t301": "ms1000",
+    "t310": "ms1000",
+    "n310": "n1",
+    "t311": "ms3000",
+    "n311": "n1",
+    "t319": "ms1000"
+  }
+}
+2026-04-07T11:33:32.265173 [DU-F1   ] [I] F1 Setup: Sending F1 Setup Request to CU-CP...
+2026-04-07T11:33:32.265318 [DU-F1   ] [I] Tx PDU du=0 tid=0: F1SetupRequest
+2026-04-07T11:33:32.265693 [CU-CP-F1] [I] Rx PDU du=0 tid=0: F1SetupRequest
+2026-04-07T11:33:32.266195 [CU-CP-F1] [I] Tx PDU du=0 tid=0: F1SetupResponse
+2026-04-07T11:33:32.266200 [DU-F1   ] [I] Rx PDU du=0 tid=0: F1SetupResponse
+2026-04-07T11:33:32.266205 [DU-F1   ] [I] F1 Setup: Procedure completed successfully.
+2026-04-07T11:33:32.266221 [SCHED   ] [I] [     0.0] cell=0: Cell scheduling was activated.
+2026-04-07T11:33:32.266245 [MAC     ] [I] [     0.0] cell=0: Cell was activated
+2026-04-07T11:33:32.266274 [DU-MNG  ] [I] DU manager started successfully.
+2026-04-07T11:33:32.266277 [DU      ] [I] DU-High started successfully
+2026-04-07T11:33:32.266281 [DU      ] [I] DU started successfully
+2026-04-07T11:33:33.266307 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:33.266314 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:33.266446 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:34.266307 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:34.266315 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:34.266495 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:35.266309 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:35.266315 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:35.266551 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:36.266310 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:36.266317 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:36.266603 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:37.266310 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:37.266317 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:37.266609 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:38.266310 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:38.266317 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:38.266656 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:39.266310 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:39.266317 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:39.266659 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:40.266310 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:40.266318 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:40.266710 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:41.266309 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:41.266318 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:41.266764 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:42.266312 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:42.266319 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:42.266767 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:43.266311 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:43.266319 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:43.266819 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:44.266313 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:44.266319 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:44.266872 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:45.266313 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:45.266320 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:45.266927 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:46.266312 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:46.266320 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:46.266981 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:47.266313 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:47.266321 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:47.267035 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:48.266313 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:48.266321 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:48.267039 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:49.266314 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:49.266321 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:49.267041 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:50.266312 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:50.266321 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:50.267098 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:51.266315 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:51.266322 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:51.267150 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:52.266312 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:52.266321 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:52.267199 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:53.266314 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:53.266322 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:53.267203 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:54.266314 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:54.266322 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:54.267252 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:55.266315 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:55.266323 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:55.267308 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:56.266315 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:56.266324 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:56.267359 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:57.266316 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:57.266324 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:57.267385 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:58.266316 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:58.266324 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:58.267438 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:33:59.266317 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:33:59.266325 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:33:59.267441 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:00.266317 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:00.266325 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:00.267494 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:01.266318 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:01.266326 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:01.267546 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:02.266320 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:02.266327 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:02.267600 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:03.266321 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:03.266328 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:03.267655 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:04.266322 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:04.266328 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:04.267710 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:05.266320 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:05.266327 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:05.267762 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:06.266320 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:06.266328 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:06.267764 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:07.266322 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:07.266329 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:07.267818 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:08.266324 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:08.266330 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:08.267872 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:09.266324 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:09.266330 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:09.267926 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:10.266323 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:10.266330 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:10.267979 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:11.266323 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:11.266330 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:11.267983 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:12.266323 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:12.266331 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:12.268031 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:13.266323 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:13.266331 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:13.268040 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:14.266324 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:14.266332 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:14.268091 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:15.266324 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:15.266332 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:15.268103 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:16.266324 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:16.266333 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:16.268149 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:17.266325 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:17.266334 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:17.268199 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:18.266325 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:18.266333 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:18.268251 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:19.266326 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:19.266334 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:19.268255 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:20.266326 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:20.266335 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:20.268292 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:21.266326 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:21.266334 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:21.268343 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:22.266327 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:22.266335 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:22.268384 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:23.266327 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:23.266335 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:23.268438 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:24.266327 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:24.266335 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:24.268490 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:25.266327 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:25.266336 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:25.268543 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:26.266328 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:26.266336 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:26.268597 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:27.266328 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:27.266337 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:27.268650 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:28.266329 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:28.266337 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:28.268703 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:29.266331 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:29.266338 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:29.268709 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:30.266331 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:30.266339 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:30.268763 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:31.266332 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:31.266339 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:31.268765 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:32.266338 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:32.266343 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:32.268817 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:33.266334 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:33.266343 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:33.268870 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:34.266332 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:34.266344 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:34.268884 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:35.266334 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:35.266344 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:35.268931 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:36.266334 [zmq:tx:0:0] [I] Waiting for request.
+2026-04-07T11:34:36.266345 [zmq:rx:0:0] [I] Waiting for data.
+2026-04-07T11:34:36.268982 [zmq:rx:0:0] [I] Waiting for reading samples. Completed 0 of 23040 samples.
+2026-04-07T11:34:36.782758 [SCHED   ] [I] [    10.3] Processed slot events pci=1: Cell creation idx=0 pci=1
+2026-04-07T11:34:36.785057 [DU      ] [I] Stopping DU...
+2026-04-07T11:34:36.785058 [DU      ] [I] Stopping DU-High...
+2026-04-07T11:34:36.785204 [SCHED   ] [I] [    10.5] cell=0: Cell scheduling was deactivated.
+2026-04-07T11:34:36.785358 [MAC     ] [I] [    10.5] cell=0: Cell was stopped.
+2026-04-07T11:34:36.785676 [DU-F1   ] [I] Tx PDU du=0 tid=1: F1RemovalRequest
+2026-04-07T11:34:36.785694 [CU-CP-F1] [I] Rx PDU du=0 tid=1: F1RemovalRequest
+2026-04-07T11:34:36.785702 [CU-CP-F1] [I] Tx PDU du=0 tid=1: F1RemovalResponse
+2026-04-07T11:34:36.785706 [DU-F1   ] [I] Rx PDU du=0 tid=1: F1RemovalResponse
+2026-04-07T11:34:36.785719 [DU-F1   ] [I] F1 Removal: F1 TNL association shut down
+2026-04-07T11:34:36.785724 [CU-CP   ] [I] Removed DU 0
+2026-04-07T11:34:36.785735 [DU      ] [I] DU-High stopped successfully
+2026-04-07T11:34:36.785736 [DU      ] [I] DU stopped successfully
+2026-04-07T11:34:36.785761 [CU-UP-E1] [I] Tx PDU tid=1: E1ReleaseRequest
+2026-04-07T11:34:36.785766 [CU-CP-E1] [I] Rx PDU tid=1: E1ReleaseRequest
+2026-04-07T11:34:36.785772 [CU-CP-E1] [I] Tx PDU tid=1: E1ReleaseResponse
+2026-04-07T11:34:36.785775 [CU-CP-E1] [I] "E1 Release Procedure" finished successfully
+2026-04-07T11:34:36.785778 [CU-UP-E1] [I] Rx PDU tid=1: E1ReleaseResponse
+2026-04-07T11:34:36.785786 [CU-CP   ] [I] Removed CU-UP 0
+2026-04-07T11:34:36.785788 [CU-UP-E1] [I] E1AP CU-UP Release Procedure: E1 TNL association shut down
+2026-04-07T11:34:36.785963 [CU-UP   ] [I] CU-UP stopped successfully
+2026-04-07T11:34:36.785965 [CU-CP   ] [I] Stopping CU-CP...
+2026-04-07T11:34:36.786148 [CU-CP   ] [I] CU-CP stopped successfully.
+2026-04-07T11:34:36.806558 [GNB     ] [I] Closing PCAP files...
+2026-04-07T11:34:36.806729 [GNB     ] [I] PCAP files successfully closed.
+(END)

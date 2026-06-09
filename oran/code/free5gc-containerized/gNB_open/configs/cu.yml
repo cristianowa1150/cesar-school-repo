@@ -1,0 +1,53 @@
+# srsCU (CU-CP + CU-UP) -> free5GC AMF + F1 para srsDU
+# AMF: 10.100.200.16 | CU: 10.100.200.51 | DU: 10.100.200.52
+#
+# ZMQ (RF emulado com srsUE) não entra aqui — só no DU: configs/du-zmq-srsue.yml (ru_sdr).
+#
+# ran_node_name / gnb_id / gnb_id_bit_length ficam no nível raiz (ref. srsRAN config_ref).
+# Global gNB ID distinto do gNB monolítico em gNB_tradicional (411).
+#
+# Slices (S-NSSAI) — coerência obrigatória com o core e com o subscritor:
+#   - AMF: configuration.plmnSupportList[].snssaiList (sd em hex 6 dígitos)
+#   - CU:  tai_slice_support_list abaixo (sd em decimal no YAML srsRAN)
+#   - UDM: perfil do UE (ex.: core/scripts/add-subscriber.sh — sd '010203' / '112233')
+# Equivalência: 0x010203 = 66051 | 0x112233 = 1122867
+# PLMN 20893 e TAC 1: alinhar com supportTaiList (AMF: tac 000001) e du-zmq-srsue.yml cell_cfg (tac/plmn).
+
+ran_node_name: srsgnb_open412
+gnb_id: 412
+gnb_id_bit_length: 22
+
+cu_cp:
+  amf:
+    addr: 10.100.200.16
+    port: 38412
+    bind_addr: 10.100.200.51
+    supported_tracking_areas:
+      - tac: 1
+        plmn_list:
+          - plmn: "20893"
+            tai_slice_support_list:
+              - sst: 1
+                sd: 010203
+              - sst: 1
+                sd: 112233
+  f1ap:
+    bind_addr: 10.100.200.51
+
+cu_up:
+  # NG-U (N3 GTP-U) em .51; F1-U em .61 — mesma porta 2152, IPs distintos (ver entrypoint-cu.sh).
+  ngu:
+    socket:
+      - bind_addr: 10.100.200.51
+  f1u:
+    socket:
+      - bind_addr: 10.100.200.61
+
+log:
+  filename: /logs/cu.log
+  all_level: info
+
+pcap:
+  ngap_enable: true
+  ngap_filename: /logs/cu_ngap.pcap
+

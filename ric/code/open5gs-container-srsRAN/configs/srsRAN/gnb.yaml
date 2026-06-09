@@ -1,0 +1,54 @@
+# srsRAN Project gNB - 5G SA ZMQ (no-RF)
+# Open5GS docker-compose: N2→AMF, N3→UPF, ZMQ↔srsUE
+# Estrutura cu_cp.amf.supported_tracking_areas conforme
+# /usr/local/share/srsran/gnb_rf_b210_fdd_srsUE.yml na imagem aetherproject/srsran-gnb
+#
+# N2: 10.20.0.101 → AMF 10.20.0.11:38412
+# N3: bind 10.30.0.101
+# ZMQ: gNB tx:2000 rx:2001 ↔ srsUE tx:2001 rx:2000
+
+cu_cp:
+  inactivity_timer: 7200
+  amf:
+    addr: 10.20.0.11
+    port: 38412
+    bind_addr: 10.20.0.101
+    supported_tracking_areas:
+      - tac: 7
+        plmn_list:
+          - plmn: "00101"
+            tai_slice_support_list:
+              - sst: 1
+
+cu_up:
+  ngu:
+    socket:
+      - bind_addr: 10.30.0.101
+
+ru_sdr:
+  device_driver: zmq
+  device_args: tx_port=tcp://*:2000,rx_port=tcp://srsran-ue:2001,id=ue,base_srate=23.04e6
+  srate: 23.04
+  tx_gain: 75
+  rx_gain: 75
+
+cell_cfg:
+  dl_arfcn: 368500
+  band: 3
+  channel_bandwidth_MHz: 20
+  common_scs: 15
+  plmn: "00101"
+  tac: 7
+  pdcch:
+    dedicated:
+      ss2_type: common
+      dci_format_0_1_and_1_1: false
+    common:
+      ss0_index: 0
+      coreset0_index: 12
+  prach:
+    prach_config_index: 1
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64

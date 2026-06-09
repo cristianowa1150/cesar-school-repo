@@ -1,0 +1,307 @@
+2026-04-07T11:34:44.364930 [GNB     ] [I] Built in Release mode using commit 4bf1543936 on branch main
+2026-04-07T11:34:44.365222 [CONFIG  ] [I] Input configuration (only non-default values): 
+log:
+  filename: /logs/du.log
+  all_level: info
+f1ap:
+  cu_cp_addr: 10.100.200.51
+  bind_addr: 10.100.200.52
+f1u:
+  socket: "bind_addr: 10.100.200.52"
+pcap:
+  f1ap_filename: /logs/du_f1ap.pcap
+  f1ap_enable: true
+  f1u_filename: /logs/du_f1u.pcap
+  f1u_enable: true
+  mac_filename: /logs/du_mac.pcap
+  mac_enable: true
+cell_cfg:
+  pci: 2
+  dl_arfcn: 632628
+  band: 78
+  common_scs: 30
+  channel_bandwidth_MHz: 20
+  plmn: 20893
+  tac: 1
+ru_dummy:
+  time_scaling: 1
+2026-04-07T11:34:44.975288 [DU      ] [W] CPU0 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975302 [DU      ] [W] CPU1 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975314 [DU      ] [W] CPU2 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975321 [DU      ] [W] CPU3 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975328 [DU      ] [W] CPU4 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975336 [DU      ] [W] CPU5 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975344 [DU      ] [W] CPU6 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975352 [DU      ] [W] CPU7 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975360 [DU      ] [W] CPU8 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975368 [DU      ] [W] CPU9 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975378 [DU      ] [W] CPU10 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975395 [DU      ] [W] CPU11 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975404 [DU      ] [W] CPU12 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975411 [DU      ] [W] CPU13 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975418 [DU      ] [W] CPU14 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975425 [DU      ] [W] CPU15 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975433 [DU      ] [W] CPU16 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975439 [DU      ] [W] CPU17 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975446 [DU      ] [W] CPU18 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975456 [DU      ] [W] CPU19 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975463 [DU      ] [W] CPU20 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975470 [DU      ] [W] CPU21 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.975480 [DU      ] [W] DRM KMS polling is enabled, which may hinder performance. You can disable it using the "srsran_performance" script
+2026-04-07T11:34:44.985916 [CONFIG  ] [I] Worker pool "main_pool" instantiated with #workers=5, task_queue_size=2048, backoff_period=50us and priority=96.
+2026-04-07T11:34:44.988521 [GTPU    ] [I] GTP-U demux. queue_size=2048 batch_size=256 warn_on_drop=true test_mode=false
+2026-04-07T11:34:45.036068 [DU-MNG  ] [I] The upper-bound on the number of UEs supported by cell {pci=2, du_cell_index=0} is 96 (the actual number might be lower than that). This is determined by the lowest of the following limits: SR (96), CSI (96) and SRS (n/a).
+2026-04-07T11:34:45.036786 [DU      ] [I] DU created successfully
+2026-04-07T11:34:45.036800 [DU      ] [I] O-DU created successfully
+2026-04-07T11:34:45.037032 [GNB     ] [I] SSB derived parameters for cell: 2, band: 78, dl_arfcn:632628, nof_crbs: 51 scs:30kHz, ssb_scs:30kHz:
+	 - SSB offset pointA:0 
+	 - k_SSB:0 
+	 - SSB arfcn:632256 
+	 - Coreset index:0 
+	 - Searchspace index:0
+2026-04-07T11:34:45.037067 [IO-EPOLL] [E] fd=0: Failed to register file descriptor. Cause: epoll_ctl failed with "Operation not permitted"
+2026-04-07T11:34:45.037087 [APP     ] [E] Couldn't register stdin handler
+2026-04-07T11:34:45.037089 [DU      ] [I] Starting DU...
+2026-04-07T11:34:45.037089 [DU      ] [I] Starting DU-High...
+2026-04-07T11:34:45.037090 [DU-MNG  ] [I] DU manager starting...
+2026-04-07T11:34:45.037540 [DU-F1   ] [I] F1-C: TNL connection to CU-CP on 10.100.200.51:38472 accepted
+2026-04-07T11:34:45.064689 [DU-MNG  ] [I] SIB1 cell=0: {
+  "cellSelectionInfo": {
+    "q-RxLevMin": -70,
+    "q-QualMin": -20
+  },
+  "cellAccessRelatedInfo": {
+    "plmn-IdentityInfoList": [
+      {
+        "plmn-IdentityList": [
+          {
+            "mcc": [
+              2,
+              0,
+              8
+            ],
+            "mnc": [
+              9,
+              3
+            ]
+          }
+        ],
+        "trackingAreaCode": "000000000000000000000001",
+        "cellIdentity": "000000000000011001101100000000000000",
+        "cellReservedForOperatorUse": "notReserved"
+      }
+    ]
+  },
+  "connEstFailureControl": {
+    "connEstFailCount": "n1",
+    "connEstFailOffsetValidity": "s30",
+    "connEstFailOffset": 1
+  },
+  "servingCellConfigCommon": {
+    "downlinkConfigCommon": {
+      "frequencyInfoDL": {
+        "frequencyBandList": [
+          {
+            "freqBandIndicatorNR": 78
+          }
+        ],
+        "offsetToPointA": 0,
+        "scs-SpecificCarrierList": [
+          {
+            "offsetToCarrier": 0,
+            "subcarrierSpacing": "kHz30",
+            "carrierBandwidth": 51,
+            "txDirectCurrentLocation": 306
+          }
+        ]
+      },
+      "initialDownlinkBWP": {
+        "genericParameters": {
+          "locationAndBandwidth": 13750,
+          "subcarrierSpacing": "kHz30"
+        },
+        "pdcch-ConfigCommon": {
+          {
+            "commonSearchSpaceList": [
+              {
+                "searchSpaceId": 1,
+                "controlResourceSetId": 0,
+                "monitoringSlotPeriodicityAndOffset": {
+                },
+                "monitoringSymbolsWithinSlot": "10000000000000",
+                "nrofCandidates": {
+                  "aggregationLevel1": "n0",
+                  "aggregationLevel2": "n0",
+                  "aggregationLevel4": "n1",
+                  "aggregationLevel8": "n0",
+                  "aggregationLevel16": "n0"
+                },
+                "searchSpaceType": {
+                  "common": {
+                    "dci-Format0-0-AndFormat1-0": {
+                    }
+                  }
+                }
+              }
+            ],
+            "searchSpaceSIB1": 0,
+            "pagingSearchSpace": 1,
+            "ra-SearchSpace": 1
+          }
+        },
+        "pdsch-ConfigCommon": {
+          {
+            "pdsch-TimeDomainAllocationList": [
+              {
+                "mappingType": "typeA",
+                "startSymbolAndLength": 53
+              },
+              {
+                "mappingType": "typeA",
+                "startSymbolAndLength": 72
+              }
+            ]
+          }
+        }
+      },
+      "bcch-Config": {
+        "modificationPeriodCoeff": "n4"
+      },
+      "pcch-Config": {
+        "defaultPagingCycle": "rf128",
+        "nAndPagingFrameOffset": {
+        },
+        "ns": "one"
+      }
+    },
+    "uplinkConfigCommon": {
+      "frequencyInfoUL": {
+        "frequencyBandList": [
+          {
+            "freqBandIndicatorNR": 78
+          }
+        ],
+        "absoluteFrequencyPointA": 632016,
+        "scs-SpecificCarrierList": [
+          {
+            "offsetToCarrier": 0,
+            "subcarrierSpacing": "kHz30",
+            "carrierBandwidth": 51
+          }
+        ]
+      },
+      "initialUplinkBWP": {
+        "genericParameters": {
+          "locationAndBandwidth": 13750,
+          "subcarrierSpacing": "kHz30"
+        },
+        "rach-ConfigCommon": {
+          {
+            "rach-ConfigGeneric": {
+              "prach-ConfigurationIndex": 159,
+              "msg1-FDM": "one",
+              "msg1-FrequencyStart": 11,
+              "zeroCorrelationZoneConfig": 0,
+              "preambleReceivedTargetPower": -100,
+              "preambleTransMax": "n7",
+              "powerRampingStep": "dB4",
+              "ra-ResponseWindow": "sl20"
+            },
+            "ssb-perRACH-OccasionAndCB-PreamblesPerSSB": {
+              "one": "n64"
+            },
+            "ra-ContentionResolutionTimer": "sf64",
+            "prach-RootSequenceIndex": {
+              "l139": 1
+            },
+            "msg1-SubcarrierSpacing": "kHz30",
+            "restrictedSetConfig": "unrestrictedSet"
+          }
+        },
+        "pusch-ConfigCommon": {
+          {
+            "pusch-TimeDomainAllocationList": [
+              {
+                "k2": 4,
+                "mappingType": "typeA",
+                "startSymbolAndLength": 27
+              },
+              {
+                "k2": 5,
+                "mappingType": "typeA",
+                "startSymbolAndLength": 27
+              },
+              {
+                "k2": 6,
+                "mappingType": "typeA",
+                "startSymbolAndLength": 27
+              },
+              {
+                "k2": 7,
+                "mappingType": "typeA",
+                "startSymbolAndLength": 27
+              },
+              {
+                "k2": 11,
+                "mappingType": "typeA",
+                "startSymbolAndLength": 27
+              }
+            ],
+            "msg3-DeltaPreamble": 6,
+            "p0-NominalWithGrant": -76
+          }
+        },
+        "pucch-ConfigCommon": {
+          {
+            "pucch-ResourceCommon": 11,
+            "pucch-GroupHopping": "neither",
+            "p0-nominal": -90
+          }
+        }
+      },
+      "timeAlignmentTimerCommon": "infinity"
+    },
+    "n-TimingAdvanceOffset": "n25600",
+    "ssb-PositionsInBurst": {
+      "inOneGroup": "10000000"
+    },
+    "ssb-PeriodicityServingCell": "ms10",
+    "tdd-UL-DL-ConfigurationCommon": {
+      "referenceSubcarrierSpacing": "kHz30",
+      "pattern1": {
+        "dl-UL-TransmissionPeriodicity": "ms5",
+        "nrofDownlinkSlots": 6,
+        "nrofDownlinkSymbols": 8,
+        "nrofUplinkSlots": 3,
+        "nrofUplinkSymbols": 0
+      }
+    },
+    "ss-PBCH-BlockPower": -16
+  },
+  "ue-TimersAndConstants": {
+    "t300": "ms1000",
+    "t301": "ms1000",
+    "t310": "ms1000",
+    "n310": "n1",
+    "t311": "ms3000",
+    "n311": "n1",
+    "t319": "ms1000"
+  }
+}
+2026-04-07T11:34:45.065726 [DU-F1   ] [I] F1 Setup: Sending F1 Setup Request to CU-CP...
+2026-04-07T11:34:45.065728 [DU-F1   ] [I] Tx PDU du=0 tid=0: F1SetupRequest
+2026-04-07T11:34:45.071065 [DU-F1   ] [I] Rx PDU du=0 tid=0: F1SetupFailure
+2026-04-07T11:34:45.071081 [DU-MNG  ] [E] F1 Setup attempt 1/1 failed. Cause: CU-CP responded with "F1 Setup Failure" with F1AP cause "message-not-compatible-with-receiver-state". No more retries left.
+2026-04-07T11:34:45.071105 [DU-MNG  ] [I] DU manager started successfully.
+2026-04-07T11:34:45.071108 [DU      ] [I] DU-High started successfully
+2026-04-07T11:34:45.071111 [DU      ] [I] DU started successfully
+2026-04-07T11:37:21.357700 [DU      ] [I] Stopping DU...
+2026-04-07T11:37:21.357702 [DU      ] [I] Stopping DU-High...
+2026-04-07T11:37:21.366671 [DU-F1   ] [I] Tx PDU du=68719476736 tid=1: F1RemovalRequest
+2026-04-07T11:37:21.366937 [DU-F1   ] [I] Rx PDU du=68719476736 tid=1: F1RemovalResponse
+2026-04-07T11:37:21.367117 [DU-F1   ] [I] F1 Removal: F1 TNL association shut down
+2026-04-07T11:37:21.367129 [DU      ] [I] DU-High stopped successfully
+2026-04-07T11:37:21.367129 [DU      ] [I] DU stopped successfully
+2026-04-07T11:37:21.380735 [GNB     ] [I] Closing PCAP files...
+2026-04-07T11:37:21.381085 [GNB     ] [I] PCAP files successfully closed.
+(END)

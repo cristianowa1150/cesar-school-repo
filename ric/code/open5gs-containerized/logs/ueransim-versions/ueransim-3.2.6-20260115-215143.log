@@ -1,0 +1,116 @@
+=== Logs do gNB ===
+ueransim-gnb-containerized  | N2_BIND_IP: 10.20.0.100
+ueransim-gnb-containerized  | N3_BIND_IP: 10.30.0.100
+ueransim-gnb-containerized  | N3_ADVERTISE_IP: 10.30.0.100
+ueransim-gnb-containerized  | RADIO_BIND_IP: 10.20.0.100
+ueransim-gnb-containerized  | AMF_IP: 10.20.0.11
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | UERANSIM v3.2.6
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.127] [sctp] [info] Trying to establish SCTP connection... (10.20.0.11:38412)
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.130] [sctp] [info] SCTP connection established (10.20.0.11:38412)
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.130] [sctp] [debug] SCTP association setup ascId[15]
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.130] [ngap] [debug] Sending NG Setup Request
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.136] [ngap] [debug] NG Setup Response received
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.136] [ngap] [info] NG Setup procedure is successful
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.259] [rrc] [debug] UE[1] new signal detected
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.260] [rrc] [info] RRC Setup for UE[1]
+ueransim-gnb-containerized  | [2026-01-16 00:49:13.260] [ngap] [debug] Initial NAS message received from UE[1]
+ueransim-gnb-containerized  | [2026-01-16 00:49:28.334] [rrc] [debug] UE[2] new signal detected
+ueransim-gnb-containerized  | [2026-01-16 00:49:29.335] [rls] [debug] UE[1] signal lost
+ueransim-gnb-containerized  | [2026-01-16 00:49:38.284] [rrc] [info] RRC Setup for UE[2]
+ueransim-gnb-containerized  | [2026-01-16 00:49:38.284] [ngap] [debug] Initial NAS message received from UE[2]
+ueransim-gnb-containerized  | [2026-01-16 00:49:38.288] [ngap] [debug] UE Context Release Command received
+ueransim-gnb-containerized  | [2026-01-16 00:49:38.288] [rrc] [info] Releasing RRC connection for UE[2]
+
+=== Logs do UE ===
+ueransim-ue-containerized  | GNB_IP: 10.20.0.100
+ueransim-ue-containerized  | Launching ue: nr-ue -c ue.yaml
+ueransim-ue-containerized  | UERANSIM v3.2.6
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [rrc] [debug] New signal detected for cell[1], total [1] cells in coverage
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [nas] [info] Selected plmn[001/01]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [rrc] [info] Selected cell plmn[001/01] tac[7] category[SUITABLE]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [nas] [info] UE switches to state [MM-DEREGISTERED/PS]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [nas] [info] UE switches to state [MM-DEREGISTERED/NORMAL-SERVICE]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [nas] [debug] Initial registration required due to [MM-DEREG-NORMAL-SERVICE]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.259] [nas] [debug] Sending Initial Registration
+ueransim-ue-containerized  | [2026-01-16 00:49:13.260] [nas] [info] UE switches to state [MM-REGISTER-INITIATED]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.260] [rrc] [debug] Sending RRC Setup Request
+ueransim-ue-containerized  | [2026-01-16 00:49:13.260] [rrc] [info] RRC connection established
+ueransim-ue-containerized  | [2026-01-16 00:49:13.260] [rrc] [info] UE switches to state [RRC-CONNECTED]
+ueransim-ue-containerized  | [2026-01-16 00:49:13.260] [nas] [info] UE switches to state [CM-CONNECTED]
+ueransim-ue-containerized  | [2026-01-16 00:49:28.274] [nas] [debug] NAS timer[3510] expired [1]
+ueransim-ue-containerized  | [2026-01-16 00:49:28.274] [nas] [info] UE switches to state [MM-DEREGISTERED/PS]
+ueransim-ue-containerized  | [2026-01-16 00:49:28.274] [nas] [info] UE switches to state [5U2-NOT-UPDATED]
+ueransim-ue-containerized  | [2026-01-16 00:49:28.274] [nas] [info] Performing local release of NAS connection
+ueransim-ue-containerized  | [2026-01-16 00:49:28.274] [nas] [info] UE switches to state [MM-DEREGISTERED/ATTEMPTING-REGISTRATION]
+ueransim-ue-containerized  | [2026-01-16 00:49:28.274] [rrc] [info] UE switches to state [RRC-IDLE]
+ueransim-ue-containerized  | [2026-01-16 00:49:28.274] [nas] [info] UE switches to state [CM-IDLE]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [nas] [debug] NAS timer[3511] expired [1]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [nas] [debug] Initial registration required due to [T3511-EXPIRY-IN-ATT-REG]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [nas] [debug] Sending Initial Registration
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [nas] [info] UE switches to state [MM-REGISTER-INITIATED]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [rrc] [debug] Sending RRC Setup Request
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [rrc] [info] RRC connection established
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [rrc] [info] UE switches to state [RRC-CONNECTED]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.284] [nas] [info] UE switches to state [CM-CONNECTED]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.288] [rrc] [debug] RRC Release received
+ueransim-ue-containerized  | [2026-01-16 00:49:38.288] [nas] [error] Initial Registration failed [FIVEG_SERVICES_NOT_ALLOWED]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.288] [nas] [info] UE switches to state [5U3-ROAMING-NOT-ALLOWED]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.288] [nas] [info] UE switches to state [MM-DEREGISTERED/PS]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.288] [nas] [info] UE switches to state [CM-IDLE]
+ueransim-ue-containerized  | [2026-01-16 00:49:38.288] [nas] [info] UE switches to state [MM-DEREGISTERED/NO-SUPI]
+
+=== Logs do AMF ===
+open5gs-amf-containerized  | [32m01/15 21:49:23.809[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:49:23.809[0m: [[33msbi[0m] [1;32mINFO[0m: [338740aa-f275-41f0-95b6-c74b7af3965b] Subscription created until 2026-01-16T21:49:23.808290-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:49:23.809[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:49:23.809[0m: [[33msbi[0m] [1;32mINFO[0m: [33874758-f275-41f0-95b6-c74b7af3965b] Subscription created until 2026-01-16T21:49:23.808461-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:49:23.809[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:49:23.809[0m: [[33msbi[0m] [1;32mINFO[0m: [33874992-f275-41f0-95b6-c74b7af3965b] Subscription created until 2026-01-16T21:49:23.808514-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:49:23.810[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:49:23.810[0m: [[33msbi[0m] [1;32mINFO[0m: [3387545a-f275-41f0-95b6-c74b7af3965b] Subscription created until 2026-01-16T21:49:23.808794-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:49:23.810[0m: [[33msbi[0m] [1;32mINFO[0m: [2cd2a60a-f275-41f0-bd50-a1a042fcae8b] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+open5gs-amf-containerized  | [32m01/15 21:49:23.810[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:49:23.810[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:49:23.810[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:49:23.810[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:49:23.811[0m: [[33msbi[0m] [1;32mINFO[0m: [2cd93b5a-f275-41f0-851f-397249f01cb5] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+open5gs-amf-containerized  | [32m01/15 21:49:23.811[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.17:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:49:23.811[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.17:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:49:23.811[0m: [[33msbi[0m] [1;32mINFO[0m: [2cf10a3c-f275-41f0-8fd4-6137b614f8c1] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+open5gs-amf-containerized  | [32m01/15 21:49:23.811[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.13:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:49:23.811[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.13:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:49:23.844[0m: [[33msbi[0m] [1;32mINFO[0m: [2cf789b6-f275-41f0-95d8-5f96676ce935] (NRF-notify) NF registered (../lib/sbi/nnrf-handler.c:1140)
+open5gs-amf-containerized  | [32m01/15 21:49:23.844[0m: [[33msbi[0m] [1;32mINFO[0m: [2cf789b6-f275-41f0-95d8-5f96676ce935] (NRF-notify) NF Profile updated [type:SMF] (../lib/sbi/nnrf-handler.c:1154)
+open5gs-amf-containerized  | [32m01/15 21:49:23.844[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.12:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:49:23.844[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.12:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:49:26.662[0m: [[33msbi[0m] [1;32mINFO[0m: [2ea9d7dc-f275-41f0-a1dc-bb15ca14feb2] (NRF-notify) NF registered (../lib/sbi/nnrf-handler.c:1140)
+open5gs-amf-containerized  | [32m01/15 21:49:26.662[0m: [[33msbi[0m] [1;32mINFO[0m: [2ea9d7dc-f275-41f0-a1dc-bb15ca14feb2] (NRF-notify) NF Profile updated [type:PCF] (../lib/sbi/nnrf-handler.c:1154)
+open5gs-amf-containerized  | [32m01/15 21:49:26.662[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.16:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:49:26.662[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.16:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mamf[0m] [1;32mINFO[0m: InitialUEMessage (../src/amf/ngap-handler.c:437)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mamf[0m] [1;32mINFO[0m: [Added] Number of gNB-UEs is now 2 (../src/amf/context.c:2789)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mamf[0m] [1;32mINFO[0m:     RAN_UE_NGAP_ID[2] AMF_UE_NGAP_ID[2] TAC[7] CellID[0x1] (../src/amf/ngap-handler.c:598)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mamf[0m] [1;32mINFO[0m: [suci-0-001-01-0000-0-0-0000000001] known UE by SUCI (../src/amf/context.c:1904)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mamf[0m] [1;36mWARNING[0m: [suci-0-001-01-0000-0-0-0000000001] Holding NG Context (../src/amf/amf-sm.c:1118)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mamf[0m] [1;36mWARNING[0m: [suci-0-001-01-0000-0-0-0000000001]    RAN_UE_NGAP_ID[1] AMF_UE_NGAP_ID[1] (../src/amf/amf-sm.c:1118)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mgmm[0m] [1;36mWARNING[0m: Registration request (../src/amf/gmm-sm.c:1853)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mgmm[0m] [1;32mINFO[0m: [suci-0-001-01-0000-0-0-0000000001]    SUCI (../src/amf/gmm-handler.c:183)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33mamf[0m] [1;36mWARNING[0m: GUTI has already been allocated (../src/amf/context.c:1482)
+open5gs-amf-containerized  | [32m01/15 21:49:38.284[0m: [[33msbi[0m] [1;32mINFO[0m: [2cf10a3c-f275-41f0-8fd4-6137b614f8c1] Setup NF Instance [type:AUSF] (../lib/sbi/path.c:307)
+open5gs-amf-containerized  | [32m01/15 21:49:38.287[0m: [[33mgmm[0m] [1;36mWARNING[0m: [suci-0-001-01-0000-0-0-0000000001] Cannot find SUCI [404] (../src/amf/gmm-sm.c:1930)
+open5gs-amf-containerized  | [32m01/15 21:49:38.287[0m: [[33mamf[0m] [1;36mWARNING[0m: [suci-0-001-01-0000-0-0-0000000001] Registration reject [7] (../src/amf/nas-path.c:213)
+open5gs-amf-containerized  | [32m01/15 21:49:38.287[0m: [[33mgmm[0m] [1;36mWARNING[0m: [(null)] Failure in transaction; no context restoration. (../src/amf/gmm-sm.c:1941)
+open5gs-amf-containerized  | [32m01/15 21:49:38.288[0m: [[33mamf[0m] [1;32mINFO[0m: UE Context Release [Action:3] (../src/amf/ngap-handler.c:1733)
+open5gs-amf-containerized  | [32m01/15 21:49:38.288[0m: [[33mamf[0m] [1;32mINFO[0m:     RAN_UE_NGAP_ID[2] AMF_UE_NGAP_ID[2] (../src/amf/ngap-handler.c:1734)
+open5gs-amf-containerized  | [32m01/15 21:49:38.288[0m: [[33mamf[0m] [1;32mINFO[0m:     SUCI[suci-0-001-01-0000-0-0-0000000001] (../src/amf/ngap-handler.c:1738)
+open5gs-amf-containerized  | [32m01/15 21:49:38.288[0m: [[33mamf[0m] [1;32mINFO[0m: [Removed] Number of gNB-UEs is now 1 (../src/amf/context.c:2796)
+open5gs-amf-containerized  | [32m01/15 21:49:38.288[0m: [[33mamf[0m] [1;32mINFO[0m: [Removed] Number of AMF-UEs is now 0 (../src/amf/context.c:1780)
+open5gs-amf-containerized  | [32m01/15 21:50:08.288[0m: [[33mamf[0m] [1;36mWARNING[0m: Implicit NG release (../src/amf/amf-sm.c:1015)
+open5gs-amf-containerized  | [32m01/15 21:50:08.289[0m: [[33mamf[0m] [1;36mWARNING[0m:     RAN_UE_NGAP_ID[1] AMF_UE_NGAP_ID[1] (../src/amf/amf-sm.c:1016)
+open5gs-amf-containerized  | [32m01/15 21:50:08.289[0m: [[33mamf[0m] [1;32mINFO[0m: UE Context Release [Action:1] (../src/amf/ngap-handler.c:1733)
+open5gs-amf-containerized  | [32m01/15 21:50:08.289[0m: [[33mamf[0m] [1;32mINFO[0m:     RAN_UE_NGAP_ID[1] AMF_UE_NGAP_ID[1] (../src/amf/ngap-handler.c:1734)
+open5gs-amf-containerized  | [32m01/15 21:50:08.289[0m: [[33mamf[0m] [1;32mINFO[0m: [Removed] Number of gNB-UEs is now 0 (../src/amf/context.c:2796)

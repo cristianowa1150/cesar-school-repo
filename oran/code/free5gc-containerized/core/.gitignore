@@ -1,0 +1,11 @@
+# vscode
+.vscode
+
+mongodb
+base/free5gc
+
+# cert
+cert/*_*.pem
+
+# capturas de rede (podem ser grandes)
+captures/*.pcap

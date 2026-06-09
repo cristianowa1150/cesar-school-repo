@@ -1,0 +1,24 @@
+services:
+  ueransim:
+    container_name: ueransim
+    image: ueransim:latest
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - ./configs/gnb.yaml:/ueransim/config/gnb.yaml
+      - ./configs/ue.yaml:/ueransim/config/ue.yaml
+      - ./configs/entrypoint.sh:/entrypoint.sh:ro
+    entrypoint: ["/bin/bash", "/entrypoint.sh"]
+    networks:
+      demo-oai-public-net:
+        ipv4_address: 192.168.70.141
+
+    healthcheck:
+      test: ["CMD-SHELL", "ip a | grep -q uesimtun"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  demo-oai-public-net:
+    external: true

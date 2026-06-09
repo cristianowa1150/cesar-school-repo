@@ -1,0 +1,25 @@
+mcc: '001'          # Mobile Country Code
+mnc: '01'           # Mobile Network Code
+
+nci: '0x000000001'   # gNB ID
+idLength: 32         # gNB ID length in bits
+
+tac: 7               # Tracking Area Code (deve corresponder ao TAC do AMF)
+
+linkIp: ${N2_BIND_IP}  # gNB's local IP address for N2 interface (NGAP)
+ngapIp: ${N2_BIND_IP}  # gNB's local IP address for N2 interface (NGAP)
+
+gtpIp: ${N3_BIND_IP}   # gNB's local IP address for N3 interface (GTP-U)
+
+# List of AMF address information
+amfConfigs:
+  - address: ${AMF_IP}  # AMF IP address
+    port: 38412           # AMF NGAP port
+
+# List of supported S-NSSAIs
+slices:
+  - sst: 0x1              # Slice/Service Type
+    # sd: 0x010203        # Slice Differentiator (removido - AMF não suporta SD)
+
+# Indicates whether or not the SCTP stream number errors should be ignored
+ignoreStreamIds: true

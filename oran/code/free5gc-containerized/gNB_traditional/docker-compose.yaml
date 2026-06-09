@@ -1,0 +1,42 @@
+services:
+  srsran-gnb:
+    build:
+      context: ../core
+      dockerfile: Dockerfile.srsRAN
+    image: srsran-gnb:local
+    container_name: srsran-gnb-tradicional
+    hostname: srsran-gnb-tradicional
+    environment:
+      GNB_CONFIG: "${GNB_CONFIG:-gnb-zmq-srsue.yml}"
+      GNB_AUTO_START: "${GNB_AUTO_START:-1}"
+    # Apenas 2000: o gNB faz bind em 2000 (DL) e o srsUE no host conecta em 127.0.0.1:2000.
+    # NÃO mapear 2001: o srsUE precisa fazer bind em 2001 no host; 2001:2001 ocuparia essa porta.
+    # O gNB conecta a host.docker.internal:2001 (saída do container → host), sem publish.
+    ports:
+      - "2000:2000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      privnet:
+        ipv4_address: 10.100.200.50
+    volumes:
+      - ./configs:/etc/srsran:ro
+      - ./logs:/logs
+    entrypoint: ["/bin/sh", "/etc/srsran/entrypoint.sh"]
+    cap_add:
+      - NET_ADMIN
+      # Permite SCHED_FIFO / prioridade real (evita «Scheduling priority … Not enough privileges»).
+      - SYS_NICE
+    ulimits:
+      rtprio:
+        soft: 99
+        hard: 99
+      memlock:
+        soft: -1
+        hard: -1
+    restart: "no"
+
+networks:
+  privnet:
+    name: free5gc-privnet
+    external: true

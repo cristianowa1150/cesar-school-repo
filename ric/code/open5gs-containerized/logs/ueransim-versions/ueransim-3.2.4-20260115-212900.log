@@ -1,0 +1,94 @@
+=== Logs do gNB ===
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+ueransim-gnb-containerized  | Launching gnb: nr-gnb -c gnb.yaml
+ueransim-gnb-containerized  | ERROR: Field 'linkIp' is missing.
+
+=== Logs do UE ===
+ueransim-ue-containerized  | Launching ue: nr-ue -c ue.yaml
+ueransim-ue-containerized  | UERANSIM v3.2.4
+ueransim-ue-containerized  | [2026-01-15 21:26:30.972] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
+ueransim-ue-containerized  | [2026-01-15 21:26:33.173] [nas] [error] PLMN selection failure, no cells in coverage
+ueransim-ue-containerized  | [2026-01-15 21:26:35.375] [nas] [error] PLMN selection failure, no cells in coverage
+ueransim-ue-containerized  | [2026-01-15 21:26:35.974] [rrc] [warning] Acceptable cell selection failed, no cell is in coverage
+ueransim-ue-containerized  | [2026-01-15 21:26:35.974] [rrc] [error] Cell selection failure, no suitable or acceptable cell found
+ueransim-ue-containerized  | [2026-01-15 21:26:36.476] [nas] [info] UE switches to state [MM-DEREGISTERED/NO-CELL-AVAILABLE]
+ueransim-ue-containerized  | [2026-01-15 21:27:05.986] [rrc] [warning] Acceptable cell selection failed, no cell is in coverage
+ueransim-ue-containerized  | [2026-01-15 21:27:05.986] [rrc] [error] Cell selection failure, no suitable or acceptable cell found
+ueransim-ue-containerized  | [2026-01-15 21:27:06.203] [nas] [error] PLMN selection failure, no cells in coverage
+ueransim-ue-containerized  | [2026-01-15 21:27:35.998] [rrc] [warning] Acceptable cell selection failed, no cell is in coverage
+ueransim-ue-containerized  | [2026-01-15 21:27:35.998] [rrc] [error] Cell selection failure, no suitable or acceptable cell found
+ueransim-ue-containerized  | [2026-01-15 21:27:37.031] [nas] [error] PLMN selection failure, no cells in coverage
+ueransim-ue-containerized  | [2026-01-15 21:28:06.010] [rrc] [warning] Acceptable cell selection failed, no cell is in coverage
+ueransim-ue-containerized  | [2026-01-15 21:28:06.010] [rrc] [error] Cell selection failure, no suitable or acceptable cell found
+ueransim-ue-containerized  | [2026-01-15 21:28:07.859] [nas] [error] PLMN selection failure, no cells in coverage
+ueransim-ue-containerized  | [2026-01-15 21:28:36.022] [rrc] [warning] Acceptable cell selection failed, no cell is in coverage
+ueransim-ue-containerized  | [2026-01-15 21:28:36.022] [rrc] [error] Cell selection failure, no suitable or acceptable cell found
+ueransim-ue-containerized  | [2026-01-15 21:28:38.687] [nas] [error] PLMN selection failure, no cells in coverage
+
+=== Logs do AMF ===
+open5gs-amf-containerized  | Open5GS daemon v2.7.6
+open5gs-amf-containerized  | 
+open5gs-amf-containerized  | [32m01/15 21:26:30.364[0m: [[33mapp[0m] [1;32mINFO[0m: Configuration: '/etc/open5gs/amf.yaml' (../lib/app/ogs-init.c:144)
+open5gs-amf-containerized  | [32m01/15 21:26:30.364[0m: [[33mapp[0m] [1;32mINFO[0m: File Logging: '/var/log/open5gs/amf.log' (../lib/app/ogs-init.c:147)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.200:7777] (../lib/sbi/context.c:507)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33mmetrics[0m] [1;32mINFO[0m: metrics_server() [http://10.10.0.11]:9090 (../lib/metrics/prometheus/context.c:300)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33msbi[0m] [1;32mINFO[0m: NF Service [namf-comm] (../lib/sbi/context.c:1994)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33msbi[0m] [1;32mINFO[0m: nghttp2_server() [http://10.10.0.11]:7777 (../lib/sbi/nghttp2-server.c:439)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33mamf[0m] [1;32mINFO[0m: ngap_server() [10.20.0.11]:38412 (../src/amf/ngap-sctp.c:61)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33msctp[0m] [1;32mINFO[0m: AMF initialize...done (../src/amf/app.c:33)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33msbi[0m] [1;36mWARNING[0m: Couldn't connect to server (7): Failed to connect to 10.10.0.200 port 7777: Connection refused (../lib/sbi/client.c:757)
+open5gs-amf-containerized  | [32m01/15 21:26:30.367[0m: [[33msbi[0m] [1;36mWARNING[0m: ogs_sbi_client_handler() failed [-1] (../lib/sbi/path.c:62)
+open5gs-amf-containerized  | [32m01/15 21:26:41.379[0m: [[33msbi[0m] [1;36mWARNING[0m: [00e49fce-f272-41f0-a2d5-2ff95b117f5c] Retry registration with NRF (../lib/sbi/nf-sm.c:256)
+open5gs-amf-containerized  | [32m01/15 21:26:41.381[0m: [[33msbi[0m] [1;32mINFO[0m: [00e49fce-f272-41f0-a2d5-2ff95b117f5c] NF registered [Heartbeat:10s] (../lib/sbi/nf-sm.c:295)
+open5gs-amf-containerized  | [32m01/15 21:26:41.383[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:26:41.383[0m: [[33msbi[0m] [1;32mINFO[0m: [07758ea2-f272-41f0-b5dc-b7526767b4b2] Subscription created until 2026-01-16T21:26:41.382413-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:26:41.383[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:26:41.383[0m: [[33msbi[0m] [1;32mINFO[0m: [0775991a-f272-41f0-b5dc-b7526767b4b2] Subscription created until 2026-01-16T21:26:41.382662-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: [07759c94-f272-41f0-b5dc-b7526767b4b2] Subscription created until 2026-01-16T21:26:41.382741-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: [0775a5ae-f272-41f0-b5dc-b7526767b4b2] Subscription created until 2026-01-16T21:26:41.382980-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: [0775a8a6-f272-41f0-b5dc-b7526767b4b2] Subscription created until 2026-01-16T21:26:41.383046-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: [0775afb8-f272-41f0-b5dc-b7526767b4b2] Subscription created until 2026-01-16T21:26:41.383239-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+open5gs-amf-containerized  | [32m01/15 21:26:41.384[0m: [[33msbi[0m] [1;32mINFO[0m: [0775b2d8-f272-41f0-b5dc-b7526767b4b2] Subscription created until 2026-01-16T21:26:41.383309-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: [00bcab90-f272-41f0-ad27-9fe78a0ab151] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.13:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.13:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: [00d76e08-f272-41f0-9c26-c72a9557810b] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.17:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.17:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: [00dd9670-f272-41f0-89b8-ed7dfbea4e23] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:26:41.386[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.14:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:26:41.468[0m: [[33msbi[0m] [1;32mINFO[0m: [00edc1c6-f272-41f0-b0a7-b9d4ce317634] (NRF-notify) NF registered (../lib/sbi/nnrf-handler.c:1140)
+open5gs-amf-containerized  | [32m01/15 21:26:41.468[0m: [[33msbi[0m] [1;32mINFO[0m: [00edc1c6-f272-41f0-b0a7-b9d4ce317634] (NRF-notify) NF Profile updated [type:SMF] (../lib/sbi/nnrf-handler.c:1154)
+open5gs-amf-containerized  | [32m01/15 21:26:41.468[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.12:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:26:41.468[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.12:7777] (../lib/sbi/context.c:2113)
+open5gs-amf-containerized  | [32m01/15 21:26:44.162[0m: [[33msbi[0m] [1;32mINFO[0m: [028cc3f6-f272-41f0-b3f6-d1f4459487a2] (NRF-notify) NF registered (../lib/sbi/nnrf-handler.c:1140)
+open5gs-amf-containerized  | [32m01/15 21:26:44.162[0m: [[33msbi[0m] [1;32mINFO[0m: [028cc3f6-f272-41f0-b3f6-d1f4459487a2] (NRF-notify) NF Profile updated [type:PCF] (../lib/sbi/nnrf-handler.c:1154)
+open5gs-amf-containerized  | [32m01/15 21:26:44.162[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.16:80] (../lib/sbi/context.c:2374)
+open5gs-amf-containerized  | [32m01/15 21:26:44.162[0m: [[33msbi[0m] [1;32mINFO[0m: Setup NF EndPoint(addr) [10.10.0.16:7777] (../lib/sbi/context.c:2113)

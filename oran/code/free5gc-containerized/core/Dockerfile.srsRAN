@@ -1,0 +1,44 @@
+# ---------- build stage ----------
+    FROM ubuntu:24.04 AS builder
+    ENV DEBIAN_FRONTEND=noninteractive
+    
+    RUN apt-get update && apt-get install -y --no-install-recommends \
+        git ca-certificates build-essential cmake ninja-build pkg-config \
+        libfftw3-dev libmbedtls-dev libsctp-dev libyaml-cpp-dev \
+        libboost-program-options-dev libconfig++-dev libzmq3-dev \
+        && rm -rf /var/lib/apt/lists/*
+    
+    WORKDIR /opt
+    RUN git clone https://github.com/srsran/srsRAN_Project.git
+    WORKDIR /opt/srsRAN_Project
+    # Se você quiser travar no mesmo commit do seu host:
+    # RUN git checkout 3ed363dabf
+    
+    RUN mkdir -p build && cd build && \
+        cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DENABLE_EXPORT=ON -DENABLE_ZEROMQ=ON .. && \
+        ninja && ninja install
+    
+    RUN ldconfig
+    
+    # ---------- runtime stage ----------
+    FROM ubuntu:24.04
+    ENV DEBIAN_FRONTEND=noninteractive
+    
+    RUN apt-get update && apt-get install -y --no-install-recommends \
+        libsctp1 \
+        libfftw3-double3 \
+        libfftw3-single3 \
+        libmbedtls14 \
+        libyaml-cpp0.8 \
+        libzmq5 \
+        iproute2 iputils-ping \
+        && rm -rf /var/lib/apt/lists/*
+
+    COPY --from=builder /usr/local /usr/local
+    
+    # (opcional) só para debug de rede dentro do container
+    RUN ln -s /usr/local/bin/gnb /usr/bin/gnb || true
+    
+    WORKDIR /opt/gnb
+    

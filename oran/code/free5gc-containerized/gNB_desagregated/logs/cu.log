@@ -1,0 +1,88 @@
+2026-04-07T11:34:44.137410 [CU      ] [I] Built in Release mode using commit 4bf1543936 on branch main
+2026-04-07T11:34:44.137729 [CONFIG  ] [I] Input configuration (only non-default values): 
+ran_node_name: srsgnb_desagregated412
+gnb_id: 412
+gnb_id_bit_length: 22
+log:
+  filename: /logs/cu.log
+  all_level: info
+cu_cp:
+  f1ap:
+    bind_addr: 10.100.200.51
+  amf:
+    addr: 10.100.200.16
+    port: 38412
+    bind_addr: 10.100.200.51
+    supported_tracking_areas: "tac: 1\nplmn_list:\n  - plmn: 20893\n    tai_slice_support_list:\n      - sst: 1\n        sd: 010203\n      - sst: 1\n        sd: 112233"
+cu_up:
+  f1u:
+    socket: "bind_addr: 10.100.200.61"
+  ngu:
+    socket: "bind_addr: 10.100.200.51"
+pcap:
+  ngap_filename: /logs/cu_ngap.pcap
+  ngap_enable: true
+2026-04-07T11:34:44.765981 [CU      ] [W] CPU0 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.765999 [CU      ] [W] CPU1 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766008 [CU      ] [W] CPU2 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766016 [CU      ] [W] CPU3 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766024 [CU      ] [W] CPU4 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766032 [CU      ] [W] CPU5 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766040 [CU      ] [W] CPU6 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766049 [CU      ] [W] CPU7 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766057 [CU      ] [W] CPU8 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766064 [CU      ] [W] CPU9 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766071 [CU      ] [W] CPU10 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766082 [CU      ] [W] CPU11 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766091 [CU      ] [W] CPU12 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766098 [CU      ] [W] CPU13 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766105 [CU      ] [W] CPU14 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766112 [CU      ] [W] CPU15 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766120 [CU      ] [W] CPU16 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766127 [CU      ] [W] CPU17 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766135 [CU      ] [W] CPU18 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766142 [CU      ] [W] CPU19 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766153 [CU      ] [W] CPU20 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766160 [CU      ] [W] CPU21 scaling governor is not set to performance, which may hinder performance. You can set it to performance using the "srsran_performance" script
+2026-04-07T11:34:44.766172 [CU      ] [W] DRM KMS polling is enabled, which may hinder performance. You can disable it using the "srsran_performance" script
+2026-04-07T11:34:44.767103 [CONFIG  ] [I] Worker pool "main_pool" instantiated with #workers=2, task_queue_size=2048, backoff_period=50us and priority=96.
+2026-04-07T11:34:44.780814 [GTPU    ] [I] GTP-U demux. queue_size=8192 batch_size=256 warn_on_drop=true test_mode=false
+2026-04-07T11:34:44.782738 [IO-EPOLL] [E] fd=0: Failed to register file descriptor. Cause: epoll_ctl failed with "Operation not permitted"
+2026-04-07T11:34:44.782742 [APP     ] [E] Couldn't register stdin handler
+2026-04-07T11:34:44.782743 [CU      ] [I] Starting CU-CP...
+2026-04-07T11:34:44.783326 [CU-CP   ] [I] N2: Connection to AMF on 10.100.200.16:38412 was established
+2026-04-07T11:34:44.785069 [NGAP    ] [I] Tx PDU: NGSetupRequest
+2026-04-07T11:34:44.787527 [NGAP    ] [I] Rx PDU: NGSetupResponse
+2026-04-07T11:34:44.787735 [CU-CP   ] [I] Connected to AMF. Supported PLMNs: 20893
+2026-04-07T11:34:44.787744 [CU      ] [I] CU-CP started successfully
+2026-04-07T11:34:44.787809 [GTPU    ] [I] GTP-U demux. queue_size=2046 batch_size=256 warn_on_drop=false test_mode=false
+2026-04-07T11:34:44.787961 [GTPU    ] [I] Tunnel added. teid=0x000000
+2026-04-07T11:34:44.793665 [CU-UP   ] [I] CU-UP starting...
+2026-04-07T11:34:44.793717 [CU-CP   ] [I] Added TNL connection to CU-UP 0
+2026-04-07T11:34:44.794155 [CU-UP-E1] [I] Sending E1SetupRequest
+2026-04-07T11:34:44.794312 [CU-UP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupRequest
+2026-04-07T11:34:44.794323 [CU-CP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupRequest
+2026-04-07T11:34:44.794331 [CU-CP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupResponse
+2026-04-07T11:34:44.794346 [CU-UP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupResponse
+2026-04-07T11:34:44.794348 [CU-UP-E1] [I] "E1AP CU-UP Setup Procedure" finalized
+2026-04-07T11:34:44.794356 [CU-UP   ] [I] CU-UP started successfully
+2026-04-07T11:34:45.037808 [CU-CP   ] [I] Added TNL connection to DU 0
+2026-04-07T11:34:45.068431 [CU-CP-F1] [I] Rx PDU du=0 tid=0: F1SetupRequest
+2026-04-07T11:34:45.070573 [CU-CP-F1] [W] Rejecting F1 Setup Request. Cause: NCI 0x66c000 of the served Cell does not match this gNB-Id (0x19c != 0x19b)
+2026-04-07T11:34:45.070582 [CU-CP-F1] [I] Tx PDU du=0 tid=0: F1SetupFailure
+2026-04-07T11:37:21.366849 [CU-CP-F1] [I] Rx PDU du=0 tid=1: F1RemovalRequest
+2026-04-07T11:37:21.366856 [CU-CP-F1] [I] Tx PDU du=0 tid=1: F1RemovalResponse
+2026-04-07T11:37:21.367050 [CU-CP   ] [I] Removed DU 0
+2026-04-07T11:37:21.831010 [CU-UP-E1] [I] Tx PDU tid=1: E1ReleaseRequest
+2026-04-07T11:37:21.831020 [CU-CP-E1] [I] Rx PDU tid=1: E1ReleaseRequest
+2026-04-07T11:37:21.831027 [CU-CP-E1] [I] Tx PDU tid=1: E1ReleaseResponse
+2026-04-07T11:37:21.831030 [CU-CP-E1] [I] "E1 Release Procedure" finished successfully
+2026-04-07T11:37:21.831033 [CU-UP-E1] [I] Rx PDU tid=1: E1ReleaseResponse
+2026-04-07T11:37:21.831043 [CU-CP   ] [I] Removed CU-UP 0
+2026-04-07T11:37:21.831045 [CU-UP-E1] [I] E1AP CU-UP Release Procedure: E1 TNL association shut down
+2026-04-07T11:37:21.831279 [CU-UP   ] [I] CU-UP stopped successfully
+2026-04-07T11:37:21.831286 [CU-CP   ] [I] Stopping CU-CP...
+2026-04-07T11:37:21.831640 [CU-CP   ] [I] CU-CP stopped successfully.
+2026-04-07T11:37:21.832703 [CU      ] [I] Closing PCAP files...
+2026-04-07T11:37:21.832786 [CU      ] [I] PCAP files successfully closed.
+(END)

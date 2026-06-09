@@ -1,0 +1,67 @@
+services:
+  srsran-cu:
+    build:
+      context: ../core
+      dockerfile: Dockerfile.srsRAN
+    image: srsran-gnb:local
+    container_name: srsran-cu
+    hostname: srsran-cu
+    environment:
+      # 0 = srscu manual (./scripts/start-cu.sh). 1 = srscu no entrypoint.
+      CU_AUTO_START: "${CU_AUTO_START:-0}"
+    networks:
+      privnet:
+        ipv4_address: 10.100.200.51
+    volumes:
+      - ./configs:/etc/srsran:ro
+      - ./logs:/logs
+    entrypoint: ["/bin/sh", "/etc/srsran/entrypoint-cu.sh"]
+    cap_add:
+      - NET_ADMIN
+      # Permite SCHED_FIFO / prioridade real (evita «Scheduling priority … Not enough privileges»).
+      - SYS_NICE
+    restart: "no"
+
+  srsran-du:
+    image: srsran-gnb:local
+    container_name: srsran-du
+    hostname: srsran-du
+    environment:
+      # du.yml = ru_dummy. du-zmq-srsue.yml = srsUE ZMQ (alinhado ao default do up.sh)
+      DU_CONFIG: "${DU_CONFIG:-du-zmq-srsue.yml}"
+      # 0 = srsUE primeiro, depois ./scripts/start-du-after-ue.sh (padrão). 1 = srsdu no entrypoint.
+      DU_AUTO_START: "${DU_AUTO_START:-0}"
+    # ZMQ DL: o DU faz bind a 0.0.0.0:2002 → publicamos 2002:2002 para o srsUE no host (rx ← gNB).
+    # ZMQ UL (2003): NÃO há mapeamento aqui — o srsUE no host faz bind à 2003 e o DU liga-se para fora
+    # (host.docker.internal ou gateway da free5gc-privnet; ver scripts/lib-zmq-du-runtime.sh).
+    # Só usado com DU_CONFIG=du-zmq-srsue.yml; mapeamento inócuo com ru_dummy.
+    ports:
+      - "2002:2002"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      privnet:
+        ipv4_address: 10.100.200.52
+    volumes:
+      - ./configs:/etc/srsran:ro
+      - ./logs:/logs
+    entrypoint: ["/bin/sh", "/etc/srsran/entrypoint-du.sh"]
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+    ulimits:
+      rtprio:
+        soft: 99
+        hard: 99
+      memlock:
+        soft: -1
+        hard: -1
+    restart: "no"
+    depends_on:
+      srsran-cu:
+        condition: service_started
+
+networks:
+  privnet:
+    name: free5gc-privnet
+    external: true

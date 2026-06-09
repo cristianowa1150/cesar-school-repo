@@ -1,0 +1,55 @@
+# srsDU — split F1 + RU ZMQ para srsUE (mesma pilha RF/célula que gNB_tradicional/gnb-zmq-srsue.yml)
+# CU-CP: 10.100.200.51 | DU: 10.100.200.52
+#
+# ZMQ: 2002 (DL), 2003 (UL) — TÊM de coincidir com configs/ue_srsue.conf e com "2002:2002" no docker-compose.
+# rx_port host.docker.internal: scripts/start-du-after-ue.sh substituem pelo Gateway da rede Docker (Linux).
+
+f1ap:
+  cu_cp_addr: 10.100.200.51
+  bind_addr: 10.100.200.52
+
+f1u:
+  socket:
+    - bind_addr: 10.100.200.52
+
+ru_sdr:
+  device_driver: zmq
+  device_args: "tx_port=tcp://0.0.0.0:2002,rx_port=tcp://host.docker.internal:2003,base_srate=23.04e6,id=gnb"
+  srate: 23.04
+  tx_gain: 75
+  rx_gain: 75
+
+# Band 3, SCS 15 kHz — alinhado ao [rat.nr] do srsUE (ue_srsue.conf)
+cell_cfg:
+  dl_arfcn: 368500
+  band: 3
+  channel_bandwidth_MHz: 20
+  common_scs: 15
+  plmn: "20893"
+  tac: 1
+  pci: 1
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64
+  pdcch:
+    common:
+      ss0_index: 0
+      coreset0_index: 12
+    dedicated:
+      ss2_type: common
+      dci_format_0_1_and_1_1: false
+  prach:
+    prach_config_index: 1
+
+log:
+  filename: /logs/du.log
+  all_level: info
+
+pcap:
+  mac_enable: true
+  mac_filename: /logs/du_mac.pcap
+  f1ap_enable: true
+  f1ap_filename: /logs/du_f1ap.pcap
+  f1u_enable: true
+  f1u_filename: /logs/du_f1u.pcap

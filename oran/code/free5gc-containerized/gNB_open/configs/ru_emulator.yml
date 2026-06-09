@@ -1,0 +1,14 @@
+# O-RAN Open Fronthaul RU emulator (srsRAN Project) para laboratório
+#
+# Deve estar na mesma rede L2 do DU (no repo: rede Docker `ofhnet`).
+# A interface aqui é a `eth0` do container do RU (primeira interface).
+
+ru_emu:
+  cells:
+    - network_interface: eth0
+      ru_mac_addr: "02:00:00:00:01:01"
+      du_mac_addr: "02:00:00:00:01:02"
+      vlan_tag: 2
+      prach_port_id: [0]
+      dl_port_id: [0]
+      ul_port_id: [0]

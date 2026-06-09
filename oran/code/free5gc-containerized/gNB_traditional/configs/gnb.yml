@@ -1,0 +1,57 @@
+# srsRAN Project gNB -> free5GC (containerized)
+# PLMN: 208/93
+# AMF:  10.100.200.16:38412
+# gNB:  10.100.200.50 (privnet)
+#
+# gnb_id 411 — RAN “tradicional”. Para rodar ao mesmo tempo que gNB_desagregated, o CU usa outro gnb_id.
+
+gnb_id: 411
+gnb_id_bit_length: 22
+
+cu_cp:
+  amf:
+    addr: 10.100.200.16
+    port: 38412
+    # Required in Docker/bridge setups so SCTP uses the correct source address.
+    # Without this, kernel can pick wrong interface/IPv6 and you get "Network is unreachable"
+    # (see srsRAN Discussion #322).
+    bind_addr: 10.100.200.50
+    supported_tracking_areas:
+      - tac: 1
+        plmn_list:
+          - plmn: "20893"
+            tai_slice_support_list:
+              - sst: 1
+
+# RU em modo simulado via ZMQ (sem UHD/SDR)
+ru_dummy:
+  # Endpoints: gNB "fala" com RU/UE via sockets ZMQ
+  # Ajuste portas se você rodar UE em outro container/host.
+  # dl_addr: "tcp://*:2000"
+  # ul_addr: "tcp://*:2001"
+  # opcional em algumas versões:
+  # prach_addr: "tcp://*:2002"
+  # srate: 23.04  # se a sua versão exigir, a gente alinha com BW/SCS
+  # tx_gain: 0
+  # rx_gain: 0
+
+cell_cfg:
+  # Exemplo n78 (3.5 GHz). Ajuste conforme seu lab.
+  dl_arfcn: 632628
+  band: 78
+  channel_bandwidth_MHz: 20
+  common_scs: 30
+
+  plmn: "20893"
+  tac: 1
+  pci: 1
+
+log:
+  filename: /logs/gnb.log
+  all_level: info
+
+pcap:
+  ngap_enable: true
+  ngap_filename: /logs/gnb_ngap.pcap
+  mac_enable: true
+  mac_filename: /logs/gnb_mac.pcap

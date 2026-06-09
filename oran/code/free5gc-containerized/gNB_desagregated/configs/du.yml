@@ -1,0 +1,35 @@
+# srsDU — split O-RAN (F1-C / F1-U) com RU simulado (sem SDR)
+# CU-CP: 10.100.200.51 | este DU: 10.100.200.52
+
+f1ap:
+  cu_cp_addr: 10.100.200.51
+  bind_addr: 10.100.200.52
+
+f1u:
+  socket:
+    - bind_addr: 10.100.200.52
+
+ru_dummy:
+  time_scaling: 1
+
+cell_cfg:
+  dl_arfcn: 632628
+  band: 78
+  channel_bandwidth_MHz: 20
+  common_scs: 30
+  plmn: "20893"
+  tac: 1
+  # PCI distinto da célula do gNB tradicional (pci 1) quando ambas estão ativas.
+  pci: 2
+
+log:
+  filename: /logs/du.log
+  all_level: info
+
+pcap:
+  mac_enable: true
+  mac_filename: /logs/du_mac.pcap
+  f1ap_enable: true
+  f1ap_filename: /logs/du_f1ap.pcap
+  f1u_enable: true
+  f1u_filename: /logs/du_f1u.pcap
