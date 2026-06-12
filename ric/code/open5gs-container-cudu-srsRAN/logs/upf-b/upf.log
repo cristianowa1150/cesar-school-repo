@@ -1,0 +1,36 @@
+Open5GS daemon v2.7.6
+
+06/10 23:04:20.985: [app] INFO: Configuration: '/etc/open5gs/upf-b.yaml' (../lib/app/ogs-init.c:144)
+06/10 23:04:20.985: [app] INFO: File Logging: '/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+06/10 23:04:21.010: [metrics] INFO: metrics_server() [http://10.40.0.22]:9090 (../lib/metrics/prometheus/context.c:300)
+06/10 23:04:21.010: [pfcp] INFO: pfcp_server() [10.40.0.22]:8805 (../lib/pfcp/path.c:30)
+06/10 23:04:21.010: [gtp] INFO: gtp_server() [10.30.0.22]:2152 (../lib/gtp/path.c:30)
+06/10 23:04:21.010: [app] INFO: UPF initialize...done (../src/upf/app.c:31)
+06/10 23:04:21.010: [upf] INFO: PFCP associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:168)
+06/10 23:07:57.141: [upf] WARNING: PFCP[REQ] has already been associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:256)
+06/10 23:07:57.142: [pfcp] ERROR: Remote PFCP restarted [3990132250<3990132477] in Heartbeat REQ (../lib/pfcp/handler.c:39)
+06/10 23:07:57.142: [upf] INFO: PFCP de-associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:184)
+06/10 23:07:57.142: [upf] INFO: PFCP associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:168)
+06/10 23:07:57.142: [upf] ERROR: PFCP restoration (../src/upf/pfcp-sm.c:178)
+06/10 23:07:57.574: [pfcp] WARNING: [21] LOCAL  No Reponse. Give up! for step 1 type 1 peer [10.40.0.12]:8805 (../lib/pfcp/xact.c:602)
+06/10 23:07:57.574: [upf] WARNING: No Heartbeat from SMF [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:309)
+06/10 23:07:57.574: [upf] INFO: PFCP de-associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:184)
+06/10 23:07:57.574: [upf] INFO: PFCP associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:168)
+Open5GS daemon v2.7.6
+
+06/11 14:29:56.606: [app] INFO: Configuration: '/etc/open5gs/upf-b.yaml' (../lib/app/ogs-init.c:144)
+06/11 14:29:56.606: [app] INFO: File Logging: '/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+06/11 14:29:56.632: [metrics] INFO: metrics_server() [http://10.40.0.22]:9090 (../lib/metrics/prometheus/context.c:300)
+06/11 14:29:56.632: [pfcp] INFO: pfcp_server() [10.40.0.22]:8805 (../lib/pfcp/path.c:30)
+06/11 14:29:56.632: [gtp] INFO: gtp_server() [10.30.0.22]:2152 (../lib/gtp/path.c:30)
+06/11 14:29:56.632: [app] INFO: UPF initialize...done (../src/upf/app.c:31)
+06/11 14:29:56.633: [upf] INFO: PFCP associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:168)
+Open5GS daemon v2.7.6
+
+06/11 17:53:07.403: [app] INFO: Configuration: '/etc/open5gs/upf-b.yaml' (../lib/app/ogs-init.c:144)
+06/11 17:53:07.403: [app] INFO: File Logging: '/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+06/11 17:53:07.428: [metrics] INFO: metrics_server() [http://10.40.0.22]:9090 (../lib/metrics/prometheus/context.c:300)
+06/11 17:53:07.428: [pfcp] INFO: pfcp_server() [10.40.0.22]:8805 (../lib/pfcp/path.c:30)
+06/11 17:53:07.428: [gtp] INFO: gtp_server() [10.30.0.22]:2152 (../lib/gtp/path.c:30)
+06/11 17:53:07.428: [app] INFO: UPF initialize...done (../src/upf/app.c:31)
+06/11 17:53:07.429: [upf] INFO: PFCP associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:168)

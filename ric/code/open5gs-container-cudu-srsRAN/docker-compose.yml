@@ -1,0 +1,708 @@
+# Laboratório Open5GS totalmente containerizado com srsRAN CU/DU e srsUE
+# Arquitetura: Control Plane (Open5GS) + srsRAN split-8 validado
+#              + perfil opcional strict-cudu para CU/DU em processos separados
+# Autor: Jonas Augusto Kunzler
+# Data: 2025-12-17
+#
+# Estrutura de configuração conforme padrão Open5GS:
+# - Todos os arquivos YAML em configs/open5gs/
+# - Cada serviço usa -c /etc/open5gs/<servico>.yaml
+# - Múltiplas UPFs: upf-a.yaml, upf-b.yaml, etc.
+
+services:
+  # ============================================================================
+  # Database
+  # ============================================================================
+  
+  mongodb:
+    image: ${MONGODB_IMAGE:-mongo:7.0}
+    container_name: open5gs-mongodb-containerized
+    hostname: mongodb
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.20
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-config:/data/configdb
+    environment:
+      - TZ=America/Recife
+      - MONGO_INITDB_DATABASE=open5gs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ============================================================================
+  # Network Functions do Control Plane (Open5GS)
+  # ============================================================================
+  
+  nrf:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-nrf-containerized
+    hostname: nrf
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-nrfd -c /etc/open5gs/nrf.yaml
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.10
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/nrf:/var/log/open5gs
+    environment:
+      - TZ=America/Recife
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-nrfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  scp:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-scp-containerized
+    hostname: scp
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-scpd -c /etc/open5gs/scp.yaml
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.200
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/scp:/var/log/open5gs
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-scpd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  amf:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-amf-containerized
+    hostname: amf
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-amfd -c /etc/open5gs/amf.yaml
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.11
+      net-n2:
+        ipv4_address: 10.20.0.11
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/amf:/var/log/open5gs
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-amfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  smf:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-smf-containerized
+    hostname: smf
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-smfd -c /etc/open5gs/smf.yaml
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.12
+      net-n4:
+        ipv4_address: 10.40.0.12
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./configs/open5gs/freeDiameter:/etc/freeDiameter
+      - ./logs/smf:/var/log/open5gs
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-smfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  ausf:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-ausf-containerized
+    hostname: ausf
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-ausfd -c /etc/open5gs/ausf.yaml
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.13
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/ausf:/var/log/open5gs
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-ausfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  udm:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-udm-containerized
+    hostname: udm
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-udmd -c /etc/open5gs/udm.yaml
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.14
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/udm:/var/log/open5gs
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-udmd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  udr:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-udr-containerized
+    hostname: udr
+    entrypoint: []
+    command: ["/scripts/init-udr.sh"]
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.15
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/udr:/var/log/open5gs
+      - ./scripts/init-udr.sh:/scripts/init-udr.sh:ro
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-udrd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  pcf:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-pcf-containerized
+    hostname: pcf
+    entrypoint: []
+    command: ["/scripts/init-pcf.sh"]
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.16
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/pcf:/var/log/open5gs
+      - ./scripts/init-pcf.sh:/scripts/init-pcf.sh:ro
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-pcfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  nssf:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-nssf-containerized
+    hostname: nssf
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-nssfd -c /etc/open5gs/nssf.yaml
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.17
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/nssf:/var/log/open5gs
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      nrf:
+        condition: service_healthy
+    user: root
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-nssfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # ============================================================================
+  # User Plane Functions (UPF-A e UPF-B para failover/load balancing)
+  # ============================================================================
+  
+  upf-a:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-upf-containerized-a
+    hostname: upf-a
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-upfd -c /etc/open5gs/upf-a.yaml
+    privileged: true
+    networks:
+      net-n3:
+        ipv4_address: 10.30.0.21
+      net-n4:
+        ipv4_address: 10.40.0.21
+      net-n6:
+        ipv4_address: 10.50.0.21
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/upf-a:/var/log/open5gs
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - TZ=America/Recife
+      - IPV4_TUN_ADDR=10.60.0.1/16
+      - IPV6_TUN_ADDR=2001:db8:cafe::1/48
+      - IPV4_TUN_SUBNET=10.60.0.0/16
+      - ENABLE_NAT=true
+    depends_on:
+      smf:
+        condition: service_started
+    user: root
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - NET_RAW
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-upfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  upf-b:
+    image: ${OPEN5GS_IMAGE:-gradiant/open5gs:2.7.6}
+    container_name: open5gs-upf-containerized-b
+    hostname: upf-b
+    entrypoint: ["/entrypoint.sh"]
+    command: /opt/open5gs/bin/open5gs-upfd -c /etc/open5gs/upf-b.yaml
+    privileged: true
+    networks:
+      net-n3:
+        ipv4_address: 10.30.0.22
+      net-n4:
+        ipv4_address: 10.40.0.22
+      net-n6:
+        ipv4_address: 10.50.0.22
+    volumes:
+      - ./configs/open5gs:/etc/open5gs
+      - ./logs/upf-b:/var/log/open5gs
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - TZ=America/Recife
+      - IPV4_TUN_ADDR=10.60.0.1/16
+      - IPV6_TUN_ADDR=2001:db8:cafe::1/48
+      - IPV4_TUN_SUBNET=10.60.0.0/16
+      - ENABLE_NAT=true
+    depends_on:
+      smf:
+        condition: service_started
+    user: root
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - NET_RAW
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f open5gs-upfd || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # ============================================================================
+  # Adicional functions
+  # ============================================================================
+  
+  dn:
+    image: ${DN_IMAGE:-alpine:latest}
+    container_name: open5gs-dn-containerized
+    hostname: dn
+    command: >
+      sh -c "
+        apk add --no-cache iptables iproute2 net-tools tcpdump curl wget;
+        echo 1 > /proc/sys/net/ipv4/ip_forward;
+        iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE;
+        tail -f /dev/null
+      "
+    networks:
+      net-n6:
+        ipv4_address: 10.50.0.100
+    privileged: true
+    restart: unless-stopped
+
+  webui:
+    image: ${WEBUI_IMAGE:-gradiant/open5gs-webui:2.7.6}
+    container_name: open5gs-webui-containerized
+    hostname: webui
+    ports:
+      - 9999:9999
+    networks:
+      net-sbi:
+        ipv4_address: 10.10.0.100
+    # volumes:
+    #   - ./configs/open5gs:/etc/open5gs
+    #   - ./logs/webui:/var/log/open5gs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://127.0.0.1:9999', (r) => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    environment:
+      - TZ=America/Recife
+      - DB_URI=mongodb://mongodb/open5gs
+    depends_on:
+      nrf:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+
+  # ============================================================================
+  # RAN 1 - UERANSIM (gNB + UE no mesmo container)
+  # N2: 10.20.0.100 → AMF 10.20.0.11 | N3: 10.30.0.100 ↔ UPF 10.30.0.21
+  # ============================================================================
+
+  ueransim-gnb:
+    image: ${UERANSIM_IMAGE:-gradiant/ueransim:3.2.6}
+    container_name: ueransim-gnb-containerized
+    hostname: ueransim-gnb
+    working_dir: /ueransim
+    entrypoint: ["/bin/bash", "/opt/scripts/entrypoint-gnb.sh"]
+    command: []
+    networks:
+      net-n2:
+        ipv4_address: 10.20.0.100
+      net-n3:
+        ipv4_address: 10.30.0.100
+      net-air:
+        ipv4_address: 10.70.0.100
+    volumes:
+      - ./configs/ueransim/gnb.yaml:/ueransim/gnb.yaml:ro
+      - ./configs/ueransim/entrypoint-gnb.sh:/opt/scripts/entrypoint-gnb.sh:ro
+      - ./logs/ueransim:/ueransim/logs
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      amf:
+        condition: service_started
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+
+  ueransim-ue:
+    image: ${UERANSIM_IMAGE:-gradiant/ueransim:3.2.6}
+    container_name: ueransim-ue-containerized
+    hostname: ueransim-ue
+    working_dir: /ueransim
+    entrypoint: ["/bin/bash", "/opt/scripts/entrypoint-ue.sh"]
+    command: []
+    privileged: true
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - ./configs/ueransim/ue.yaml:/ueransim/ue.yaml:ro
+      - ./configs/ueransim/entrypoint-ue.sh:/opt/scripts/entrypoint-ue.sh:ro
+      - ./logs/ueransim:/ueransim/logs
+    networks:
+      net-air:
+        ipv4_address: 10.70.0.200
+    environment:
+      - TZ=America/Recife
+    depends_on:
+      ueransim-gnb:
+        condition: service_started
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+
+  # ============================================================================
+  # RAN 2 - srsRAN Project CU/DU estrito (processos separados)
+  # N2/N3: CU -> Core | F1-C/F1-U: CU <-> DU | ZMQ: DU <-> srsUE
+  # Requer imagem com srscu, srsdu e ZMQ habilitado.
+  # ============================================================================
+  srsran-cu:
+    image: ${SRSRAN_STRICT_CU_DU_IMAGE:-open5gs-srsran-cudu-zmq:latest}
+    container_name: srsran-cu-containerized
+    hostname: srsran-cu
+    privileged: true
+    stdin_open: true
+    tty: true
+    networks:
+      net-n2:
+        ipv4_address: 10.20.0.110
+      net-n3:
+        ipv4_address: 10.30.0.110
+      net-f1c:
+        ipv4_address: 10.80.0.10
+      net-f1u:
+        ipv4_address: 10.81.0.10
+    volumes:
+      - ./configs/srsRAN/cu.yaml:/config/cu.yaml:ro
+    command: ["srscu", "-c", "/config/cu.yaml"]
+    depends_on:
+      amf:
+        condition: service_healthy
+      upf-a:
+        condition: service_started
+    restart: unless-stopped
+    cap_add:
+      - SYS_NICE
+      - SYS_PTRACE
+    profiles:
+      - strict-cudu
+
+  srsran-du:
+    image: ${SRSRAN_STRICT_CU_DU_IMAGE:-open5gs-srsran-cudu-zmq:latest}
+    container_name: srsran-du-containerized
+    hostname: srsran-du
+    privileged: true
+    stdin_open: true
+    tty: true
+    networks:
+      net-f1c:
+        ipv4_address: 10.80.0.30
+      net-f1u:
+        ipv4_address: 10.81.0.30
+      net-zmq:
+        ipv4_address: 172.31.250.10
+    volumes:
+      - ./configs/srsRAN/du.yaml:/config/du.yaml:ro
+    command: ["srsdu", "-c", "/config/du.yaml"]
+    depends_on:
+      - srsran-cu
+    restart: unless-stopped
+    cap_add:
+      - SYS_NICE
+      - SYS_PTRACE
+    profiles:
+      - strict-cudu
+
+  # ============================================================================
+  # RAN 2 - srsRAN split-8 validado para E2E com srsUE via ZMQ
+  # O binário gnb_split_8 mantém CU/DU no mesmo processo, mas expõe a pilha
+  # srsRAN funcional com Open5GS e srsUE no lab Docker.
+  # ============================================================================
+  srsran-cu-du:
+    image: ${SRSRAN_CU_DU_IMAGE:-aetherproject/srsran-gnb:rel-0.7.0}
+    container_name: srsran-cu-du-containerized
+    hostname: srsran-du
+    privileged: true
+    stdin_open: true
+    tty: true
+    networks:
+      net-n2:
+        ipv4_address: 10.20.0.101
+      net-n3:
+        ipv4_address: 10.30.0.101
+      net-zmq:
+        ipv4_address: 172.31.250.10
+    volumes:
+      - ./configs/srsRAN/gnb.yaml:/config/gnb.yaml:ro
+    command: ["gnb_split_8", "-c", "/config/gnb.yaml"]
+    depends_on:
+      amf:
+        condition: service_healthy
+    restart: unless-stopped
+    cap_add:
+      - SYS_NICE
+      - SYS_PTRACE
+    profiles:
+      - e2e
+
+  # ============================================================================
+  # RAN 2 - srsRAN 4G srsUE (ZMQ, conecta ao DU)
+  # Requer: ./scripts/build-srsue.sh antes
+  # ============================================================================
+  srsran-ue:
+    image: ${SRSRAN_UE_IMAGE:-srsue:latest}
+    container_name: srsran-ue-containerized
+    hostname: srsran-ue
+    privileged: true
+    stdin_open: true
+    tty: true
+    networks:
+      net-zmq:
+        ipv4_address: 172.31.250.20
+    volumes:
+      - ./configs/srsRAN/ue.conf:/config/ue.conf:ro
+      - ./docker/srsue/entrypoint.sh:/entrypoint.sh:ro
+    # Entrypoint customizado: sobe o srsue e aponta a rota default para a TUN 5G
+    entrypoint: ["/bin/bash", "/entrypoint.sh"]
+    # 5G SA: PHY NR (default do srsue é LTE)
+    command: ["--ue.phy", "nr", "/config/ue.conf"]
+    restart: unless-stopped
+    profiles:
+      - strict-cudu
+      - e2e
+
+  # ============================================================================
+  # Testes opcionais: iperf3 server (na rede N6) e client (no UE)
+  # ============================================================================
+  iperf3-server:
+    image: networkstatic/iperf3
+    container_name: iperf3-server
+    hostname: iperf3-server
+    command: ["-s"]
+    networks:
+      net-n6:
+        ipv4_address: 10.50.0.50
+    profiles:
+      - tools
+    restart: "no"
+
+  iperf3-client:
+    image: networkstatic/iperf3
+    container_name: iperf3-client
+    hostname: iperf3-client
+    command: ["-c", "10.50.0.50", "-t", "10"]
+    networks:
+      net-n6:
+        ipv4_address: 10.50.0.51
+    profiles:
+      - tools
+    depends_on:
+      - iperf3-server
+    restart: "no"
+
+# ============================================================================
+# Redes Docker Bridge com CIDRs específicos
+# ============================================================================
+networks:
+  # Service Based Interface (SBI) - Comunicação entre NFs do control plane
+  net-sbi:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/16
+          gateway: 10.10.0.1
+
+  # N2 Interface - NGAP entre gNB e AMF
+  net-n2:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.20.0.0/16
+          gateway: 10.20.0.1
+
+  # N3 Interface - GTP-U entre gNB e UPF
+  net-n3:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.30.0.0/16
+          gateway: 10.30.0.1
+
+  # N4 Interface - PFCP entre SMF e UPF
+  net-n4:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.40.0.0/16
+          gateway: 10.40.0.1
+
+  # N6 Interface - Interface entre UPF e Data Network
+  net-n6:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.50.0.0/16
+          gateway: 10.50.0.1
+
+  # Air Interface - Interface entre UPF e UE
+  net-air:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.70.0.0/16
+          gateway: 10.70.0.1
+
+  # ZMQ - I/Q entre srsRAN DU e srsUE (sem SDR)
+  net-zmq:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.250.0/24
+          gateway: 172.31.250.1
+
+  # F1-C - Plano de controle entre CU e DU
+  net-f1c:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.80.0.0/24
+          gateway: 10.80.0.1
+
+  # F1-U - Plano de usuario entre CU e DU
+  net-f1u:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.81.0.0/24
+          gateway: 10.81.0.1
+
+volumes:
+  mongodb-data:
+    driver: local
+  mongodb-config:
+    driver: local

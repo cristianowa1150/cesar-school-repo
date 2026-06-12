@@ -1,0 +1,29 @@
+logger:
+  file:
+    path: /ueransim/logs/gnb.log 
+  
+mcc: "001"          # Mobile Country Code (Brazil)
+mnc: "01"           # Mobile Network Code
+
+nci: "0x000000001"   # gNB ID
+idLength: 32         # gNB ID length in bits
+
+tac: 7               # Tracking Area Code (deve corresponder ao TAC do AMF)
+
+linkIp: 10.70.0.100  # gNB's local IP for radio link (RLS) - rede net-air com o UE
+ngapIp: 10.20.0.100  # gNB's local IP address for N2 interface (NGAP) - rede net-n2
+
+gtpIp: 10.30.0.100   # gNB's local IP address for N3 interface (GTP-U) - rede net-n3
+
+# List of AMF address information
+amfConfigs:
+  - address: 10.20.0.11  # AMF IP address
+    port: 38412           # AMF NGAP port
+
+# List of supported S-NSSAIs
+slices:
+  - sst: 1                # Slice/Service Type (decimal, deve corresponder ao AMF)
+    # sd: 0x010203        # Slice Differentiator (removido - AMF não suporta SD)
+
+# Indicates whether or not the SCTP stream number errors should be ignored
+ignoreStreamIds: true

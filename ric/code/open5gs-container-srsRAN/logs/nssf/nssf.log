@@ -221,3 +221,17 @@ Open5GS daemon v2.7.6
 06/11 21:29:37.996: [sbi] INFO: [c4e380d8-65f5-41f1-a2e9-0bdc0674bda0] NF registered [Heartbeat:10s] (../lib/sbi/nf-sm.c:295)
 06/11 21:29:37.997: [sbi] INFO: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
 06/11 21:29:37.997: [sbi] INFO: [cb7410d4-65f5-41f1-90d2-eba519b02688] Subscription created until 2026-06-12T21:29:37.997060-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+Open5GS daemon v2.7.6
+
+06/12 07:59:19.978: [app] INFO: Configuration: '/etc/open5gs/nssf.yaml' (../lib/app/ogs-init.c:144)
+06/12 07:59:19.978: [app] INFO: File Logging: '/var/log/open5gs/nssf.log' (../lib/app/ogs-init.c:147)
+06/12 07:59:19.980: [sbi] INFO: Setup NF EndPoint(addr) [10.10.0.200:7777] (../lib/sbi/context.c:507)
+06/12 07:59:19.980: [sbi] INFO: NF Service [nnssf-nsselection] (../lib/sbi/context.c:1994)
+06/12 07:59:19.980: [sbi] INFO: nghttp2_server() [http://10.10.0.17]:7777 (../lib/sbi/nghttp2-server.c:439)
+06/12 07:59:19.980: [app] INFO: NSSF initialize...done (../src/nssf/app.c:31)
+06/12 07:59:19.980: [sbi] WARNING: Couldn't connect to server (7): Failed to connect to 10.10.0.200 port 7777: Connection refused (../lib/sbi/client.c:757)
+06/12 07:59:19.980: [sbi] WARNING: ogs_sbi_client_handler() failed [-1] (../lib/sbi/path.c:62)
+06/12 07:59:30.990: [sbi] WARNING: [c3452936-664d-41f1-aa20-fb4b81b78984] Retry registration with NRF (../lib/sbi/nf-sm.c:256)
+06/12 07:59:30.992: [sbi] INFO: [c3452936-664d-41f1-aa20-fb4b81b78984] NF registered [Heartbeat:10s] (../lib/sbi/nf-sm.c:295)
+06/12 07:59:30.992: [sbi] INFO: Setup NF EndPoint(addr) [10.10.0.10:7777] (../lib/sbi/nnrf-handler.c:955)
+06/12 07:59:30.992: [sbi] INFO: [c9d5849e-664d-41f1-bb67-f3aac6f520eb] Subscription created until 2026-06-13T07:59:30.992478-03:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)

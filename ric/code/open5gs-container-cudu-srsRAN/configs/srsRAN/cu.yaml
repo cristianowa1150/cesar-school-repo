@@ -1,0 +1,40 @@
+# srsRAN CU agregado - Split CU/DU para Open5GS
+# N2: 10.20.0.110 -> AMF 10.20.0.11:38412
+# N3/NG-U: 10.30.0.110 -> UPF
+# F1-C/F1-U: 10.80.0.10 / 10.81.0.10 <-> DU
+
+cu_cp:
+  amf:
+    addr: 10.20.0.11
+    port: 38412
+    bind_addr: 10.20.0.110
+    supported_tracking_areas:
+      - tac: 7
+        plmn_list:
+          - plmn: "00101"
+            tai_slice_support_list:
+              - sst: 1
+  f1ap:
+    bind_addr: 10.80.0.10
+
+cu_up:
+  ngu:
+    socket:
+      - bind_addr: 10.30.0.110
+  f1u:
+    socket:
+      - bind_addr: 10.81.0.10
+
+log:
+  filename: /tmp/cu.log
+  all_level: info
+
+pcap:
+  ngap_enable: true
+  ngap_filename: /tmp/cu_ngap.pcap
+  f1ap_enable: true
+  f1ap_filename: /tmp/cu_f1ap.pcap
+  f1u_enable: true
+  f1u_filename: /tmp/cu_f1u.pcap
+  n3_enable: true
+  n3_filename: /tmp/cu_n3.pcap

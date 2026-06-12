@@ -1,0 +1,7 @@
+services:
+  ueransim:
+    environment:
+      # Força diretamente os IPs de binding, independente da ordem das interfaces
+      - N2_BIND_IP=10.20.0.100
+      - N3_BIND_IP=10.30.0.100
+      - N3_ADVERTISE_IP=10.30.0.100

@@ -1,0 +1,48 @@
+# srsRAN DU - Split CU/DU com radio ZMQ para srsUE
+# F1-C: 10.80.0.30 -> CU-CP 10.80.0.10
+# F1-U: 10.81.0.30 -> CU 10.81.0.10
+# ZMQ: DU tx:2000 rx:2001 <-> srsUE tx:2001 rx:2000
+
+f1ap:
+  bind_addr: 10.80.0.30
+  cu_cp_addr: 10.80.0.10
+
+f1u:
+  socket:
+    - bind_addr: 10.81.0.30
+
+ru_sdr:
+  device_driver: zmq
+  device_args: tx_port=tcp://*:2000,rx_port=tcp://srsran-ue:2001,id=ue,base_srate=23.04e6
+  srate: 23.04
+  tx_gain: 75
+  rx_gain: 75
+
+cell_cfg:
+  dl_arfcn: 368500
+  band: 3
+  channel_bandwidth_MHz: 20
+  common_scs: 15
+  plmn: "00101"
+  tac: 7
+  pdcch:
+    dedicated:
+      ss2_type: common
+      dci_format_0_1_and_1_1: false
+    common:
+      ss0_index: 0
+      coreset0_index: 12
+  prach:
+    prach_config_index: 1
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64
+
+log:
+  filename: /tmp/du.log
+  all_level: info
+
+pcap:
+  f1ap_enable: true
+  f1ap_filename: /tmp/du-f1ap.pcap
