@@ -669,7 +669,7 @@ networks:
         - subnet: 10.50.0.0/16
           gateway: 10.50.0.1
 
-  # Air Interface - Interface entre UPF e UE
+  # Air Interface - Interface UERANSIM entre gNB e UE
   net-air:
     driver: bridge
     ipam:

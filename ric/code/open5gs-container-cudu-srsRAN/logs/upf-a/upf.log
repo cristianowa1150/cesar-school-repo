@@ -41,3 +41,37 @@ Open5GS daemon v2.7.6
 0010: ca2fe9f9 03db31b2 ff020000 00000000   ./....1.........
 0020: 00000000 00000002 85009380 00000000   ................
 06/11 17:53:50.604: [gtp] INFO: gtp_connect() [10.30.0.110]:2152 (../lib/gtp/path.c:60)
+Open5GS daemon v2.7.6
+
+06/13 10:01:33.239: [app] INFO: Configuration: '/etc/open5gs/upf-a.yaml' (../lib/app/ogs-init.c:144)
+06/13 10:01:33.239: [app] INFO: File Logging: '/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+06/13 10:01:33.262: [metrics] INFO: metrics_server() [http://10.40.0.21]:9090 (../lib/metrics/prometheus/context.c:300)
+06/13 10:01:33.262: [pfcp] INFO: pfcp_server() [10.40.0.21]:8805 (../lib/pfcp/path.c:30)
+06/13 10:01:33.262: [gtp] INFO: gtp_server() [10.30.0.21]:2152 (../lib/gtp/path.c:30)
+06/13 10:01:33.263: [app] INFO: UPF initialize...done (../src/upf/app.c:31)
+06/13 10:01:33.263: [upf] INFO: PFCP associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:168)
+06/13 10:01:56.214: [upf] INFO: [Added] Number of UPF-Sessions is now 1 (../src/upf/context.c:212)
+06/13 10:01:56.214: [gtp] INFO: gtp_connect() [10.10.0.12]:2152 (../lib/gtp/path.c:60)
+06/13 10:01:56.214: [upf] INFO: UE F-SEID[UP:0x5b0 CP:0xb05] APN[internet] PDN-Type[1] IPv4[10.60.0.2] IPv6[] (../src/upf/context.c:498)
+06/13 10:01:56.278: [upf] ERROR: Invalid packet [IP version:6, Packet Length:48] (../src/upf/gtp-path.c:622)
+0000: 60000000 00083aff fe800000 00000000   `.....:.........
+0010: a6b80065 ebb0778d ff020000 00000000   ...e..w.........
+0020: 00000000 00000002 850072db 00000000   ..........r.....
+06/13 10:01:56.279: [gtp] INFO: gtp_connect() [10.30.0.101]:2152 (../lib/gtp/path.c:60)
+Open5GS daemon v2.7.6
+
+06/13 10:11:04.344: [app] INFO: Configuration: '/etc/open5gs/upf-a.yaml' (../lib/app/ogs-init.c:144)
+06/13 10:11:04.344: [app] INFO: File Logging: '/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+06/13 10:11:04.370: [metrics] INFO: metrics_server() [http://10.40.0.21]:9090 (../lib/metrics/prometheus/context.c:300)
+06/13 10:11:04.370: [pfcp] INFO: pfcp_server() [10.40.0.21]:8805 (../lib/pfcp/path.c:30)
+06/13 10:11:04.370: [gtp] INFO: gtp_server() [10.30.0.21]:2152 (../lib/gtp/path.c:30)
+06/13 10:11:04.370: [app] INFO: UPF initialize...done (../src/upf/app.c:31)
+06/13 10:11:04.370: [upf] INFO: PFCP associated [10.40.0.12]:8805 (../src/upf/pfcp-sm.c:168)
+06/13 10:12:59.151: [upf] INFO: [Added] Number of UPF-Sessions is now 1 (../src/upf/context.c:212)
+06/13 10:12:59.152: [gtp] INFO: gtp_connect() [10.10.0.12]:2152 (../lib/gtp/path.c:60)
+06/13 10:12:59.152: [upf] INFO: UE F-SEID[UP:0x256 CP:0x605] APN[internet] PDN-Type[1] IPv4[10.60.0.2] IPv6[] (../src/upf/context.c:498)
+06/13 10:12:59.424: [upf] ERROR: Invalid packet [IP version:6, Packet Length:48] (../src/upf/gtp-path.c:622)
+0000: 60000000 00083aff fe800000 00000000   `.....:.........
+0010: f7cacd7b 94477a5f ff020000 00000000   ...{.Gz_........
+0020: 00000000 00000002 8500a949 00000000   ...........I....
+06/13 10:12:59.424: [gtp] INFO: gtp_connect() [10.30.0.110]:2152 (../lib/gtp/path.c:60)
